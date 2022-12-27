@@ -21,7 +21,7 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    let   { body } = req;
+    let { body } = req;
     const { password } = body;
     const hash = await encrypt(password);
 
@@ -34,7 +34,7 @@ const register = async (req, res) => {
     dataUser.set("password", undefined, { strict: false });
     const data = {
       msg: "REGISTRATION DONE",
-      dataUser
+      dataUser,
     };
 
     res.send({ msg: "New user registered", data });
@@ -44,4 +44,13 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { login, register };
+const test = async (req, res) => {
+  try {
+    res.send({ msg: "Test working" });
+  } catch (err) {
+    handleErrors(res, (msg = "ERR_REGISTER_AUTH"));
+    console.log(err);
+  }
+};
+
+module.exports = { login, register, test };
