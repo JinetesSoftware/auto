@@ -22,14 +22,12 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   try {
     let   { body } = req;
-    const { tenant } = req
     const { password } = body;
     const hash = await encrypt(password);
 
     body = {
       ...body,
       password: hash,
-      tenant: tenant || null
     };
 
     const dataUser = await usersModel.create(body);
@@ -46,17 +44,4 @@ const register = async (req, res) => {
   }
 };
 
-const check = (req, res) => {
-  try {
-    const {tenant} = req
-    console.log(tenant)
-    if(tenant === null ){ 
-      res.send({tenant});
-    }
-    res.send({tenant});
-  } catch (error) {
-    handleErrors(res, (msg = "ERR_CHECK_tenant"));
-  }
-};
-
-module.exports = { login, register, check };
+module.exports = { login, register };
