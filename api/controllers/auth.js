@@ -9,18 +9,18 @@ const login = async (req, res) => {
     const { password, email } = body;
 
     const dataUser = await usersModel.findOne({ email }, [
-      '_id',
+      "_id",
+      "alias",
+      "name",
+      "lastName",
       "password",
       "role",
-      "name",
-      "lastname",
-      "alias",
-      "lastName",
     ]);
     const hash = dataUser.get("password");
     const verifyUser = await compare(password, hash);
     const token = await signToken(dataUser);
-    res.send({ msg: `Login attemp: ${verifyUser}`, token });
+    dataUser.set("password", undefined, { strict: false });
+    res.send({ msg: `Login attemp: ${verifyUser}`, dataUser, token });
   } catch (err) {
     handleErrors(res, (msg = "ERR_LOGIN_AUTH"));
   }
