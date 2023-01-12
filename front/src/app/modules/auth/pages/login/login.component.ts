@@ -25,7 +25,7 @@ export class LoginComponent {
 
 	constructor(private router: Router, private auth: AuthService) {
 		this.loginForm = new FormGroup({
-			account: this.emailFormControl,
+			email: this.emailFormControl,
 			password: this.passwordFormControl,
 		});
 	}
@@ -34,7 +34,7 @@ export class LoginComponent {
 	login = () => {
 		if (this.loginForm.valid) {
 			const loginUser: any = {
-				account: this.loginForm.get('account')?.value,
+				email: this.loginForm.get('email')?.value,
 				password: this.loginForm.get('password')?.value,
 			};
 			this.auth.login(loginUser).subscribe((resp) => {
