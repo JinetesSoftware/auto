@@ -12,6 +12,9 @@ const signToken = async (user) => {
     {
       _id: user.id,
       role: user.role,
+      alias: user.alias,
+      name: user.name,
+      lastName: user.lastName
     },
     JWT_SECRET,
     {
