@@ -1,0 +1,33 @@
+<div class="login">
+  <form class="login_form" [formGroup]="loginForm">
+    <h2>PhiCan App Center</h2>
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" />
+      <mat-error *ngIf="
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required')
+        ">
+        Introduce un email válido
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl" />
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error class="textalternative-red" *ngIf="passwordFormControl.hasError('required')">El email o la contraseña
+        son incorrectos
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="login()">Log In</button>
+    <div class="login_forgot">
+      <a routerLink="/forgot-password">¿Has olvidado la contraseña?</a>
+    </div>
+  </form>
+</div>
