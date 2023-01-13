@@ -2,5 +2,10 @@
   <div class="header_left">
     <img src="assets/img/phican_logo.png">
   </div>
-  <div class="header_right"></div>
+  <div class="header_right">
+    <div class="header_user">
+     <span>Bienvenido </span> <span class="header_user-name"> {{user.name}}</span>
+    </div>
+    <button mat-raised-button color="accent" (click)="logout()">Log Out</button>
+  </div>
 </div>
