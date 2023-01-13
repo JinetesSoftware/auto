@@ -17,6 +17,36 @@
 }
 
 .main {
-  color: black;
-  margin: 10px;
+    color: black;
+    margin: 10px;
+}
+
+.navlink {
+    &__text {
+        color: black;
+        margin: 0;
+        padding: 0;
+        transition: 250ms;
+    }
+    &:hover {
+        background-color: rgb(246, 245, 245);
+        transition: 250ms;
+        cursor: pointer;
+    }
+}
+
+.isActive {
+    color: red;
+}
+
+
+::ng-deep{
+    .menusub{
+    top: -10px;
+    left: 80%;
+    position: absolute;
+    background-color: white;
+
+
+    }
 }
