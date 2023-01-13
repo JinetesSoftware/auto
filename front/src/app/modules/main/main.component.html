@@ -1,15 +1,56 @@
 <app-header></app-header>
 <mat-sidenav-container class="content">
-  <mat-sidenav class="sidebar" mode="side" opened="true" [(opened)]="this.isOpen">
-    <mat-icon class="icon--black" (click)="toggleSidebar(!this.isOpen)">keyboard_arrow_left</mat-icon>
-    Sidenav content
+  <mat-sidenav
+    class="sidebar"
+    mode="side"
+    opened="true"
+    [(opened)]="this.isOpen"
+  >
+    <mat-icon class="icon--black" (click)="toggleSidebar(!this.isOpen)"
+      >keyboard_arrow_left</mat-icon
+    >
+    <mat-list role="list">
+      <mat-list-item
+        class="navlink"
+        #menuTrigger="matMenuTrigger"
+        [activated]="i === isActive"
+        [matMenuTriggerFor]="navLink.submenus?.length ? sub_menu : null"
+        *ngFor="let navLink of navLinks; let i = index"
+        (click)="navigate(navLink.url, i)"
+        role="listitem"
+      >
+        <mat-icon class="icon--black" matListItemIcon>
+          {{ navLink.icon }}
+        </mat-icon>
+        <div style="display: flex; justify-content: start; align-items: center">
+          <p class="navlink__text">{{ navLink.name }}</p>
+          <span *ngIf="navLink.submenus?.length">
+            <mat-icon class="icon--black" matListItemIcon>
+              arrow_drop_down
+            </mat-icon>
+          </span>
+        </div>
+        <mat-menu class="menusub" #sub_menu="matMenu">
+          <button
+            *ngFor="let submenu of navLink.submenus"
+            (click)="navigate(submenu.url, 0)"
+            mat-menu-item
+          >
+            <p class="navlink__text">{{ submenu.name }}</p>
+          </button>
+        </mat-menu>
+      </mat-list-item>
+    </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-icon class="icon--black" *ngIf="!this.isOpen" (click)="toggleSidebar(!this.isOpen)">
+    <mat-icon
+      class="icon--black"
+      *ngIf="!this.isOpen"
+      (click)="toggleSidebar(!this.isOpen)"
+    >
       keyboard_arrow_right
     </mat-icon>
     <div class="main">
-
       <router-outlet> </router-outlet>
     </div>
   </mat-sidenav-content>
