@@ -1,0 +1,17 @@
+.content {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: #eee;
+}
+
+.sidebar {
+    width: 350px;
+    background-color: white;
+}
+
+.icon {
+    &--black {
+        color: black;
+    }
+}
