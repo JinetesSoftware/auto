@@ -6,14 +6,31 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    children:[
-    ]
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./pages/clients/clients.module').then((m) => m.ClientsModule),
+      },
+      {
+        path: 'planning',
+        loadChildren: () =>
+          import('./pages/planning/planning.module').then(
+            (m) => m.PlanningModule
+          ),
+      },
+      {
+        path: 'works',
+        loadChildren: () =>
+          import('./pages/works/works.module').then((m) => m.WorksModule),
+      },
+    ],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {}

@@ -1,11 +1,6 @@
 <app-header></app-header>
 <mat-sidenav-container class="content">
-  <mat-sidenav
-    class="sidebar"
-    mode="side"
-    opened="true"
-    [(opened)]="this.isOpen"
-  >
+  <mat-sidenav class="sidebar" mode="side" opened="true" [(opened)]="this.isOpen">
     <mat-icon class="icon--black" (click)="toggleSidebar(!this.isOpen)">keyboard_arrow_left</mat-icon>
     Sidenav content
   </mat-sidenav>
@@ -13,6 +8,9 @@
     <mat-icon class="icon--black" *ngIf="!this.isOpen" (click)="toggleSidebar(!this.isOpen)">
       keyboard_arrow_right
     </mat-icon>
-    <router-outlet> </router-outlet>
+    <div class="main">
+
+      <router-outlet> </router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
