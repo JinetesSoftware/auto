@@ -11,7 +11,10 @@ export class AuthService {
   private _user!: any;
   private apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  isLogin = false;
+  roleAs!: string | null;
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   //LOGIN
   login = (user: any): Observable<any> => {
@@ -23,6 +26,10 @@ export class AuthService {
         const tokenSplit = localStorage.getItem('token')!.split('.');
         const payload = JSON.parse(atob(tokenSplit![1]));
         this._user = payload;
+        this.roleAs = this._user.role[0];
+        console.log(this._user.role[0])
+        localStorage.setItem('STATE', 'true');
+        localStorage.setItem('ROLE', this.roleAs || '');
         localStorage.setItem('_user', JSON.stringify(this._user));
       }),
       map((resp) => {
@@ -55,6 +62,26 @@ export class AuthService {
   logout = () => {
     localStorage.clear();
     this._user = {};
-    this.router.navigate(['/']);
+    this.isLogin = false;
+    this.roleAs = '';
+    localStorage.setItem('STATE', 'false');
+    localStorage.setItem('ROLE', '');
+    return of({ success: this.isLogin, role: '' });
   };
+
+//CHECK IF IS LOGGED IN
+  isLoggedIn() {
+    const loggedIn = localStorage.getItem('STATE');
+    if (loggedIn == 'true')
+      this.isLogin = true;
+    else
+      this.isLogin = false;
+    return this.isLogin;
+  }
+
+  //CHECK ROLE
+  getRole() {
+    this.roleAs = localStorage.getItem('ROLE');
+    return this.roleAs;
+  }
 }
