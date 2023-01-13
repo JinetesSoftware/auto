@@ -2,36 +2,59 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { environment } from '../../../../environments/environment.prod';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private _user!: any;
   private apiUrl: string = environment.apiUrl;
 
-constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
-login = (user: any): Observable<any> => {
-  console.log(user);
-  return this.http.post<any>(`${this.apiUrl}/auth/login`, user).pipe(
-    tap((resp) => {
-      console.log(resp);
+  //LOGIN
+  login = (user: any): Observable<any> => {
+    console.log(user);
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, user).pipe(
+      tap((resp) => {
+        console.log(resp);
+        localStorage.setItem('token', resp.token!);
+        const tokenSplit = localStorage.getItem('token')!.split('.');
+        const payload = JSON.parse(atob(tokenSplit![1]));
+        this._user = payload;
+        localStorage.setItem('_user', JSON.stringify(this._user));
+      }),
+      map((resp) => {
+        return resp;
+      }),
+      catchError((err) => {
+        return of(err.error);
+      })
+    );
+  };
 
-      // localStorage.setItem('token', resp.token!);
-      // const tokenSplit = localStorage.getItem('token')!.split('.');
-      // const payload = JSON.parse(atob(tokenSplit![1]));
-      // this._user = payload;
-      // localStorage.setItem('_user', JSON.stringify(this._user));
-    }),
-    map((resp) => {
-      return resp;
-    }),
-    catchError((err) => {
-      return of(err.error);
-    }),
-  );
-};
+  //GET USER DATA
+  getUserData = () => {
+    if (!this._user && !localStorage.getItem('_user')) {
+      return null;
+    }
+    return (this._user || (JSON.parse(localStorage.getItem('_user')!)))
+  }
 
+  //VALIDATE TOKEN
+  validateToken = (): Observable<any> => {
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['/']);
+      return of(false);
+    }
+    return of(true);
+  };
+
+  //LOGOUT
+  logout = () => {
+    localStorage.clear();
+    this._user = {};
+    this.router.navigate(['/']);
+  };
 }

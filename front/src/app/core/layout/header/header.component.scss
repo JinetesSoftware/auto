@@ -32,4 +32,10 @@
       color: aliceblue;
     }
   }
+  &_user {
+    margin: 20px;
+    &-name{
+      font-weight: 600;
+    }
+  }
  }

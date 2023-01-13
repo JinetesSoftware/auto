@@ -19,7 +19,7 @@ export class LoginComponent {
     Validators.email,
   ]);
 
-  passwordFormControl: FormControl = new FormControl('', [Validators.required]);
+  passwordFormControl: FormControl = new FormControl('123456789_', [Validators.required]);
 
   constructor(private router: Router, private auth: AuthService) {
     this.loginForm = new FormGroup({
