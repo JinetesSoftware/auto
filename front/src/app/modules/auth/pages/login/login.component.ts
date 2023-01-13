@@ -6,54 +6,52 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   hide: boolean = true;
   //TODO: TIPAR
-  user:any;
+  user: any;
   loginForm: FormGroup = new FormGroup({});
 
-	emailFormControl: FormControl = new FormControl('info@info102.com', [
-		Validators.required,
-		Validators.email,
-	]);
+  emailFormControl: FormControl = new FormControl('info@info102.com', [
+    Validators.required,
+    Validators.email,
+  ]);
 
-	passwordFormControl: FormControl = new FormControl('', [
-		Validators.required,
-	]);
+  passwordFormControl: FormControl = new FormControl('', [Validators.required]);
 
-	constructor(private router: Router, private auth: AuthService) {
-		this.loginForm = new FormGroup({
-			email: this.emailFormControl,
-			password: this.passwordFormControl,
-		});
-	}
+  constructor(private router: Router, private auth: AuthService) {
+    this.loginForm = new FormGroup({
+      email: this.emailFormControl,
+      password: this.passwordFormControl,
+    });
+  }
 
   //LOGIN
-	login = () => {
-		if (this.loginForm.valid) {
-			const loginUser: any = {
-				email: this.loginForm.get('email')?.value,
-				password: this.loginForm.get('password')?.value,
-			};
-			this.auth.login(loginUser).subscribe((resp) => {
-				if (!resp.token) {
-					this.router.navigate(['']);
-				} else {
-					this.router.navigate(['/app']);
+  login = () => {
+    if (this.loginForm.valid) {
+      const loginUser: any = {
+        email: this.loginForm.get('email')?.value,
+        password: this.loginForm.get('password')?.value,
+      };
+      this.auth.login(loginUser).subscribe((resp) => {
+        if (!resp.token) {
+          this.router.navigate(['']);
+        } else {
+          this.router.navigate(['/app']);
           console.log('Te has loagueado');
-				}
-			});
-		} else {
-			this.loginForm.markAllAsTouched();
-			console.log('Invalid Form');
-		}
-	};
+        }
+      });
+    } else {
+      this.loginForm.markAllAsTouched();
+      console.log('Invalid Form');
+    }
+  };
   //VALIDATE FORM
-	isValidate = (field: string) => {
-		return (
-			this.loginForm.get(field)?.errors && this.loginForm.get(field)?.touched
-		);
-	};
+  isValidate = (field: string) => {
+    return (
+      this.loginForm.get(field)?.errors && this.loginForm.get(field)?.touched
+    );
+  };
 }
