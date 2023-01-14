@@ -17,68 +17,64 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   //LOGIN
-  login = (user: any): Observable<any> => {
-    console.log(user);
-    return this.http.post<any>(`${this.apiUrl}/auth/login`, user).pipe(
-      tap((resp) => {
-        console.log(resp);
-        localStorage.setItem('token', resp.token!);
-        const tokenSplit = localStorage.getItem('token')!.split('.');
-        const payload = JSON.parse(atob(tokenSplit![1]));
-        this._user = payload;
-        this.roleAs = this._user.role[0];
-        console.log(this._user.role[0])
-        localStorage.setItem('STATE', 'true');
-        localStorage.setItem('ROLE', this.roleAs || '');
-        localStorage.setItem('_user', JSON.stringify(this._user));
-      }),
-      map((resp) => {
-        return resp;
-      }),
-      catchError((err) => {
-        return of(err.error);
-      })
-    );
-  };
 
-  //GET USER DATA
-  getUserData = () => {
-    if (!this._user && !localStorage.getItem('_user')) {
-      return null;
-    }
-    return (this._user || (JSON.parse(localStorage.getItem('_user')!)))
+  login(user: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, user).pipe(
+      tap(resp => {
+        this.handleAuth(resp.token);
+      }),
+      map(resp => resp),
+      catchError(err => of(err.error))
+    );
   }
 
+  private handleAuth(token: string) {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    this._user = payload;
+
+    localStorage.setItem('TOKEN', token);
+    localStorage.setItem('STATE', 'true');
+    localStorage.setItem('ROLE', this._user.role[0] || '');
+    localStorage.setItem('USER', JSON.stringify(this._user));
+  }
+
+
+  //GET USER DATA
+  getUserData() {
+    if (!this._user && !localStorage.getItem('USER')) {
+      return null;
+    }
+    if (!this._user) {
+      this._user = JSON.parse(localStorage.getItem('USER')!);
+    }
+    return this._user;
+  }
   //VALIDATE TOKEN
-  validateToken = (): Observable<any> => {
-    if (!localStorage.getItem('token')) {
+  validateToken(): Observable<boolean> {
+    if (!localStorage.getItem('TOKEN')) {
       this.router.navigate(['/']);
       return of(false);
     }
     return of(true);
-  };
+  }
 
   //LOGOUT
-  logout = () => {
+  logout(): void {
     localStorage.clear();
     this._user = {};
-    this.isLogin = false;
-    this.roleAs = '';
-  };
+  }
 
-//CHECK IF IS LOGGED IN
-  isLoggedIn() {
-    const loggedIn = localStorage.getItem('STATE');
-    if (loggedIn == 'true')
-      this.isLogin = true;
-    else
-      this.isLogin = false;
-    return this.isLogin;
+  //CHECK IF IS LOGGED IN
+  isLoggedIn(): boolean {
+    return localStorage.getItem('STATE') === 'true';
   }
 
   //CHECK ROLE
-  getRole() {
-    this.roleAs = localStorage.getItem('ROLE');
-    return this.roleAs;
+  getRole(): string | null {
+    return localStorage.getItem('ROLE');
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('TOKEN');
   }
 }

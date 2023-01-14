@@ -6,6 +6,8 @@ import { ClientsComponent } from './clients.component';
 import { NewClientComponent } from './features/new-client/new-client.component';
 import { WorkOrdersComponent } from './features/work-orders/work-orders.component';
 import { BillingComponent } from './features/billing/billing.component';
+import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { BillingComponent } from './features/billing/billing.component';
   ],
   imports: [
     CommonModule,
-    ClientsRoutingModule
-  ]
+    ClientsRoutingModule,
+    MaterialModule
+  ],
 })
 export class ClientsModule { }
