@@ -64,9 +64,6 @@ export class AuthService {
     this._user = {};
     this.isLogin = false;
     this.roleAs = '';
-    localStorage.setItem('STATE', 'false');
-    localStorage.setItem('ROLE', '');
-    return of({ success: this.isLogin, role: '' });
   };
 
 //CHECK IF IS LOGGED IN
