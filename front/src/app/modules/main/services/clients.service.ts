@@ -9,8 +9,12 @@ export class ClientsService {
 
   constructor(private http: HttpClient) { }
 
-
-testReq(){
+  getClients = () => {}
+  postClient = () => {}
+  putClient = () => {}
+  deleteClients = () => {}
+  
+  testReq(){
   return this.http.get<{msg: string}>(environment.apiUrl + '/auth')
  }
 

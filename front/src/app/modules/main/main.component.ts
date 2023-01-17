@@ -25,11 +25,15 @@ export class MainComponent {
           url: '/app/new-client'
         },
         {
+          name: 'Clients List',
+          url: '/app/'
+        },
+        {
           name: 'Works orders',
           url: '/app/work-orders'
         },
         {
-          name: 'billing',
+          name: 'Billing',
           url: '/app/billing'
         },
       ]

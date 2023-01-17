@@ -1,1 +1,20 @@
-<p>new-client works!</p>
+<div class="new-client">
+  <div class="new-client-title">
+    <h2>Registro nuevo cliente</h2>
+  </div>
+  <div class="new-client-form">
+    <form [formGroup]="registerForm" class="new-client-form__container">
+      <div class="new-client-form__container-input" *ngFor="let input of registerInputs">
+        <mat-form-field class="example-full-width">
+          <mat-label>{{input.label}}</mat-label>
+          <input matInput type="{{input.type}}"  formControlName="{{input.name}}" value="{{input.defaultValue}}" />
+        </mat-form-field>
+      </div>
+      <div class="new-client-form__container-buttons">
+        <button mat-raised-button color="primary" (click)="saveClient()">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

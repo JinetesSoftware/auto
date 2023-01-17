@@ -1,0 +1,30 @@
+.new-client {
+  margin:20px;
+  width: 95%;
+  height: 90vh;
+  border-radius: 8px;
+  -webkit-box-shadow: 3px 10px 31px 21px rgba(0,0,0,0.19);
+-moz-box-shadow: 3px 10px 31px 21px rgba(0,0,0,0.19);
+box-shadow: 3px 10px 31px 21px rgba(0,0,0,0.19);
+&-title {
+  padding-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  >h3 {
+
+    font-weight: 700;
+  }
+}
+&-form {
+  margin:10px;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+}
+}
