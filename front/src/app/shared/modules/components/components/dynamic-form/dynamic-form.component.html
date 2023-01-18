@@ -1,0 +1,11 @@
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <section *ngFor="let field of formFields" class="form-row">
+    <app-dynamic-form-input
+      [field]="field"
+      [form]="form"
+    ></app-dynamic-form-input>
+  </section>
+  <section [style.margin-top]="btnMargin">
+    <button *ngIf="this.submit" type="submit">Enviar</button>
+  </section>
+</form>

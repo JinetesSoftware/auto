@@ -1,1 +1,8 @@
-<p>billing works!</p>
+<div class="content content--left">
+  <h2 class="heading-1" [style.margin-bottom]="'16px'"> Billing </h2>
+  <app-dynamic-form
+    (formData)="formData($event)"
+    [submit]="true"
+    [formFields]="inputsForm"
+  ></app-dynamic-form>
+</div>

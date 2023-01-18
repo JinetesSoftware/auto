@@ -1,0 +1,78 @@
+<section [formGroup]="form">
+  <mat-error *ngIf="hasFieldError()">
+    Campo {{ field.label }} requerido</mat-error
+  >
+
+  <section [ngSwitch]="field.controlType">
+    <!-- MAT INPUT START -->
+    <mat-form-field
+      *ngSwitchCase="'textbox'"
+      class="form-field"
+      appearance="fill"
+    >
+      <mat-label [attr.for]="field.key"> {{ field.label }} </mat-label>
+      <input
+        matInput
+        [formControlName]="field.key"
+        [id]="field.key"
+        [type]="field.type"
+        [readonly]="field.readonly"
+        placeholder="{{ field.placeholder }}"
+      />
+    </mat-form-field>
+    <!-- MAT INPUT END -->
+
+    <!-- MAT TEXT AREA START -->
+    <mat-form-field
+      *ngSwitchCase="'textarea'"
+      class="form-field"
+      appearance="fill"
+    >
+      <mat-label [attr.for]="field.key"> {{ field.label }} </mat-label>
+      <textarea
+        matInput
+        cols="35"
+        rows="8"
+        [formControlName]="field.key"
+        [id]="field.key"
+        [readonly]="field.readonly"
+        placeholder="{{ field.placeholder }}"
+      ></textarea>
+    </mat-form-field>
+    <!-- MAT TEXT AREA END -->
+
+    <!-- MAT DROPDOWN START -->
+    <mat-form-field appearance="fill" *ngSwitchCase="'dropdown'">
+      <mat-label> {{ field.label }}</mat-label>
+
+      <mat-select
+        [id]="field.key"
+        [disabled]="field.readonly"
+        class="select"
+        [formControlName]="field.key"
+        placeholder="field.placeholder"
+      >
+        <mat-option *ngFor="let opt of field.options" [value]="opt.key">
+          {{ opt.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- MAT DROPDOWN END -->
+
+    <!-- MAT CHECKBOX START -->
+
+    <mat-checkbox
+      *ngSwitchCase="'checkbox'"
+      [id]="field.key"
+      [disabled]="field.readonly"
+      class="select"
+      [formControlName]="field.key"
+      [color]="'warm'"
+    >
+    </mat-checkbox>
+    <mat-label color="primary" *ngSwitchCase="'checkbox'">
+      {{ field.label }}
+    </mat-label>
+    <!-- MAT CHECKBOX END -->
+  </section>
+</section>
