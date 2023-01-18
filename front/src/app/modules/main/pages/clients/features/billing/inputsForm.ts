@@ -62,7 +62,6 @@ export const BILLING_CONFIG_FORM: FormInputBase<string | boolean>[] = [
     key: 'Checkbox',
     required: false,
     label: 'Check me!',
-
   })
 
 

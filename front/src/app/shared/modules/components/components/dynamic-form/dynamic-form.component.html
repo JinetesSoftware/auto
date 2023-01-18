@@ -6,6 +6,6 @@
     ></app-dynamic-form-input>
   </section>
   <section [style.margin-top]="btnMargin">
-    <button *ngIf="this.submit" type="submit">Enviar</button>
+    <button *ngIf="this.submit" type="submit" mat-flat-button color="primary">{{ btnLabel }}</button>
   </section>
 </form>

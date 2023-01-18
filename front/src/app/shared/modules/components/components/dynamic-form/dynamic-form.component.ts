@@ -9,7 +9,7 @@ import { FormInputBase } from './models/form-input-base';
 export class DynamicFormComponent implements OnInit{
   @Input() formFields: FormInputBase<any>[] | null = [];
   @Input() submit = true;
-  @Input() btnLabel = 'Submit';
+  @Input() btnLabel = 'Enviar';
   @Input() btnMargin = '16px';
   @Output() formData = new EventEmitter();
   form!: FormGroup
