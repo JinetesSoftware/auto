@@ -1,7 +1,8 @@
 <section [formGroup]="form">
-  <mat-error *ngIf="hasFieldError()">
-    Campo {{ field.label }} requerido</mat-error
-  >
+
+<mat-error *ngFor="let validator of this.field.validators" >
+  {{ handleValidator(validator.name) }}
+</mat-error>
 
   <section [ngSwitch]="field.controlType">
     <!-- MAT INPUT START -->
@@ -60,7 +61,6 @@
     <!-- MAT DROPDOWN END -->
 
     <!-- MAT CHECKBOX START -->
-
     <mat-checkbox
       *ngSwitchCase="'checkbox'"
       [id]="field.key"

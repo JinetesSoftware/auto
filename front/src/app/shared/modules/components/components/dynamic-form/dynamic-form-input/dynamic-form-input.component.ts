@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ValidatorFn } from '@angular/forms';
+import { handleValidatorName } from 'src/app/shared/helpers/handleValidators';
 import { FormInputBase } from '../models/form-input-base';
 
 @Component({
@@ -11,13 +12,6 @@ export class DynamicFormInputComponent {
   @Input() field!: FormInputBase<any>;
   @Input() form!: FormGroup;
 
-
-  checked = false;
-  indeterminate = false;
-  labelPosition: 'before' | 'after' = 'after';
-  disabled = false;
-
-
   hasFieldError(): boolean {
     return (
       this.form.get(this.field.key)!.invalid &&
@@ -25,4 +19,10 @@ export class DynamicFormInputComponent {
         this.form.get(this.field.key)!.touched)
     );
   }
+
+  handleValidator(validatorName :string){
+    return handleValidatorName(validatorName);
+  }
+
+
 }
