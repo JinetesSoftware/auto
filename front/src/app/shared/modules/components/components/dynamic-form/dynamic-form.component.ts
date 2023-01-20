@@ -39,12 +39,7 @@ export class DynamicFormComponent implements OnInit{
     const group = {} as any ;
 
     this.formFields!.forEach((field) => {
-      group[field.key] = field.required
-        ? new FormControl(field.value || '', [
-            ...field.validators!,
-            Validators.required,
-          ])
-        : new FormControl(field.value || '', field.validators);
+      group[field.key] =  new FormControl(field.value || '', field.validators);
     });
     this.form = new FormGroup(group);
   }
