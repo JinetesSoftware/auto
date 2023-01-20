@@ -12,13 +12,12 @@ export class DynamicFormComponent implements OnInit{
   @Input() btnLabel = 'Enviar';
   @Input() btnMargin = '16px';
   @Output() formData = new EventEmitter();
+
   form!: FormGroup
 
   ngOnInit(): void {
     this.toFormGroup();
   }
-
-
 
   // Returns whether the form exists and has been modified.
   hasFormUnsavedChanges(): boolean {
@@ -36,11 +35,15 @@ export class DynamicFormComponent implements OnInit{
   }
 
   private toFormGroup(): void {
+
     const group = {} as any ;
 
     this.formFields!.forEach((field) => {
-      group[field.key] =  new FormControl(field.value || '', field.validators);
+      group[field.key] = new FormControl(field.value || '', field.validators);
     });
+
     this.form = new FormGroup(group);
   }
 }
+
+
