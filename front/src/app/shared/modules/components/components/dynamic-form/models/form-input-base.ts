@@ -13,7 +13,7 @@ export class FormInputBase<T> {
   validators: ValidatorFn[] | null;
   readonly: boolean;
   description?: string;
-  customError?: string;
+  customError?: string[];
 
   constructor(
     options: {
@@ -29,7 +29,7 @@ export class FormInputBase<T> {
       validators?: ValidatorFn[] | null;
       readonly?: boolean;
       description?: string;
-      customError?: string;
+      customError?: string[];
     } = {}
   ) {
     this.placeholder = options.placeholder;
@@ -44,6 +44,6 @@ export class FormInputBase<T> {
     this.validators = options.validators || [];
     this.readonly = !!options.readonly;
     this.description = options.description || '';
-    this.customError = options.customError || '';
+    this.customError = options.customError || [];
   }
 }

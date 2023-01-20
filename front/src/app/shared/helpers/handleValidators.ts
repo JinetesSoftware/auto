@@ -1,13 +1,33 @@
-export const handleValidatorName = (validatorName: string) => {
+import { ValidatorFn } from "@angular/forms"
 
-if(validatorName === 'required') {
-return 'Este campo es requerido'
-}
-
-if(validatorName === 'minLength') {
-  return 'Este campo Polla'
+export const handleValidatorName = (validatorName:ValidatorFn[] | null) => {
+  let arrayErrors:string[]  = []
+  if (validatorName === null) {
+    return;
   }
+validatorName.forEach((val:ValidatorFn) => {
 
-return 'error not found'
 
+  if(val.name === 'required') {
+  return arrayErrors.push('Este campo es requerido')
+  }
+  if(val.name === 'min') {
+    return arrayErrors.push('Este campo es requerido')
+  }
+  if(val.name === 'required') {
+    return arrayErrors.push('Este campo es requerido')
+  }
+  if(val.name === 'required') {
+    return arrayErrors.push('Este campo es requerido')
+  }
+  if(val.name === 'required') {
+    return  arrayErrors.push('Este campo es requerido')
+  }
+  if(val.name === 'minLength') {
+    return arrayErrors.push('Este campo es requerido')
+    }
+
+  return 'Se ha producido un error en este campo'
+})
+return arrayErrors;
 }

@@ -1,7 +1,9 @@
 <section [formGroup]="form">
 
-<mat-error *ngFor="let validator of this.field.validators" >
-  {{ handleValidator(validator.name) }}
+<mat-error  *ngIf="handleValidator(field.validators)" >
+ <div *ngFor="let err of arrayErrors">
+  <span>{{err}}</span>
+ </div>
 </mat-error>
 
   <section [ngSwitch]="field.controlType">

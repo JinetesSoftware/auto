@@ -12,6 +12,8 @@ export class DynamicFormInputComponent {
   @Input() field!: FormInputBase<any>;
   @Input() form!: FormGroup;
 
+  arrayErrors: string [] | undefined= []
+
   hasFieldError(): boolean {
     return (
       this.form.get(this.field.key)!.invalid &&
@@ -20,8 +22,8 @@ export class DynamicFormInputComponent {
     );
   }
 
-  handleValidator(validatorName :string){
-    return handleValidatorName(validatorName);
+  handleValidator(validatorName :ValidatorFn[] | null){
+    return this.arrayErrors = handleValidatorName(validatorName);
   }
 
 

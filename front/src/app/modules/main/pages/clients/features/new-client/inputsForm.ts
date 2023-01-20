@@ -1,5 +1,15 @@
 import { Validators } from '@angular/forms';
+import { FormTextbox } from '../../../../../../shared/modules/components/components/dynamic-form/models/form-textbox';
 export  const INPUTS_FORMS = [
+  new FormTextbox({
+    placeholder:'Nombre',
+    value:'',
+    key: ' person_name',
+    label: ' person_name',
+    type: 'text',
+    validators:[],
+    customError: []
+  }),
   {
     label:'Nombre',
     name:'person_name',
