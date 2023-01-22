@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {  FormControl, FormGroup } from '@angular/forms';
 import { INPUTS_FORMS } from './inputsForm';
+import { Client } from '../../../../../../core/models/Client';
 
 @Component({
   selector: 'app-new-client',
@@ -13,16 +14,11 @@ export class NewClientComponent {
   registerForm :FormGroup = new FormGroup({});
 
   constructor () {
-    const form = this.registerInputs.reduce((form:any, input:any) => {
-      return {...form, [input.name]: new FormControl('' , input.validations)}
-    }, {})
-    this.registerForm = new FormGroup(form);
   }
 
-  saveClient = () => {
+  saveClient = (ev: Client) => {
     if (this.registerForm.valid) {
       console.log(this.registerForm.value);
-
     }
   }
 }

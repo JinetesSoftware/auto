@@ -1,6 +1,6 @@
 <section [formGroup]="form">
 
-<mat-error  *ngIf="handleValidator(field.validators)" >
+<mat-error  *ngIf="handleValidator() && showErrors" >
  <div *ngFor="let err of arrayErrors">
   <span>{{err}}</span>
  </div>

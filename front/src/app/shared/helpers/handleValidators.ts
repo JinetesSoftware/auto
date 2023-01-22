@@ -1,33 +1,50 @@
-import { ValidatorFn } from "@angular/forms"
+import { ValidatorFn, FormGroup } from '@angular/forms';
+import { CustomError, FormInputBase } from '../modules/components/components/dynamic-form/models/form-input-base';
 
-export const handleValidatorName = (validatorName:ValidatorFn[] | null) => {
-  let arrayErrors:string[]  = []
-  if (validatorName === null) {
+export const handleValidatorName = (
+  errorObj: any,
+  field: FormInputBase<any>,
+  form: FormGroup,
+  customError: CustomError[] | undefined
+) => {
+  let arrayErrors: string[] = [];
+  if (errorObj === null) {
     return;
   }
-validatorName.forEach((val:ValidatorFn) => {
+  let validatorName = Object.keys(errorObj);
 
-
-  if(val.name === 'required') {
-  return arrayErrors.push('Este campo es requerido')
-  }
-  if(val.name === 'min') {
-    return arrayErrors.push('Este campo es requerido')
-  }
-  if(val.name === 'required') {
-    return arrayErrors.push('Este campo es requerido')
-  }
-  if(val.name === 'required') {
-    return arrayErrors.push('Este campo es requerido')
-  }
-  if(val.name === 'required') {
-    return  arrayErrors.push('Este campo es requerido')
-  }
-  if(val.name === 'minLength') {
-    return arrayErrors.push('Este campo es requerido')
+  validatorName.forEach((val: string) => {
+    if (val === 'required' && form.controls[field.key].errors) {
+      arrayErrors.push('Este campo es requerido');
     }
-
-  return 'Se ha producido un error en este campo'
-})
-return arrayErrors;
-}
+    if (val === 'minlength' && form.controls[field.key].errors) {
+      arrayErrors.push(
+        `Este campo debe tener un mínimo de ${errorObj.minlength.requiredLength} caracteres`
+      );
+    }
+    if (val === 'maxlength' && form.controls[field.key].errors) {
+      arrayErrors.push(
+        `Este campo debe tener un máximo de ${errorObj.maxlength.requiredLength} caracteres`
+      );
+    }
+    if (val === 'max' && form.controls[field.key].errors) {
+      arrayErrors.push(`Cantidad máxima  ${errorObj.max.max} `);
+    }
+    if (val === 'min' && form.controls[field.key].errors) {
+      arrayErrors.push(`Cantidad mínima  ${errorObj.min.min}`);
+    }
+    if (val === 'pattern' && form.controls[field.key].errors) {
+      customError?.forEach((reg:CustomError) => {
+        if (errorObj.pattern.requiredPattern === reg.regex) {
+          return arrayErrors.push(reg.msg);
+        }
+        return;
+      });
+    }
+    if (val === 'email' && form.controls[field.key].errors) {
+      arrayErrors.push('Email es incorrecto');
+    }
+    return;
+  });
+  return arrayErrors;
+};

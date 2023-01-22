@@ -1,19 +1,15 @@
 <div class="new-client">
   <div class="new-client-title">
-    <h2>Registro nuevo cliente</h2>
+    <h2>Registro cliente</h2>
   </div>
   <div class="new-client-form">
-    <form [formGroup]="registerForm" class="new-client-form__container">
-      <div class="new-client-form__container-input" *ngFor="let input of registerInputs">
-        <mat-form-field class="example-full-width">
-          <mat-label>{{input.label}}</mat-label>
-          <input matInput type="{{input.type}}"  formControlName="{{input.name}}" value="{{input.defaultValue}}" />
-        </mat-form-field>
-      </div>
-      <div class="new-client-form__container-buttons">
-        <button mat-raised-button color="primary" (click)="saveClient()">
-          Guardar
-        </button>
+    <form class="new-client-form__container">
+      <div class="content content--left">
+        <app-dynamic-form
+          (formData)="saveClient($event)"
+          [submit]="true"
+          [formFields]=" registerInputs"
+        ></app-dynamic-form>
       </div>
     </form>
   </div>

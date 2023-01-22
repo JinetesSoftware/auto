@@ -12,7 +12,8 @@ export class DynamicFormInputComponent {
   @Input() field!: FormInputBase<any>;
   @Input() form!: FormGroup;
 
-  arrayErrors: string [] | undefined= []
+  arrayErrors: string[] | undefined = [];
+  showErrors: boolean = false;
 
   hasFieldError(): boolean {
     return (
@@ -22,9 +23,22 @@ export class DynamicFormInputComponent {
     );
   }
 
-  handleValidator(validatorName :ValidatorFn[] | null){
-    return this.arrayErrors = handleValidatorName(validatorName);
+  handleValidator() {
+    let errorObj = this.form.controls[this.field.key].errors;
+
+    this.arrayErrors = handleValidatorName(
+      errorObj,
+      this.field,
+      this.form,
+      this.field.customError
+    );
+    if (
+      this.arrayErrors?.length &&
+      this.form.get(this.field.key)?.touched &&
+      this.form.controls[this.field.key].errors
+    ) {
+      return (this.showErrors = true);
+    }
+    return (this.showErrors = false);
   }
-
-
 }

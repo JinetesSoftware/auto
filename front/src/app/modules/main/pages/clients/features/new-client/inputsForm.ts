@@ -4,59 +4,56 @@ export  const INPUTS_FORMS = [
   new FormTextbox({
     placeholder:'Nombre',
     value:'',
-    key: ' person_name',
-    label: ' person_name',
+    key: 'person_name',
+    label: 'Nombre',
     type: 'text',
-    validators:[],
+    validators:[Validators.required,],
     customError: []
   }),
-  {
-    label:'Nombre',
-    name:'person_name',
-    type:'text',
-    defaultValue:'',
-    validations: [Validators.required],
-  },
-  {
-    label:'Primer Apellido',
-    name:'person_first_lastname',
-    type:'text',
-    defaultValue:'',
-    validations: [Validators.required],
-  },
-  {
-    label:'Segundo Apellido',
-    name:'person_second_lastname',
-    type:'text',
-    defaultValue:'',
-    validations: [Validators.required],
-  },
-  {
-    label:'Código Cliente',
-    name:'cliente_code',
-    type:'text',
-    defaultValue:'',
-    validations: [Validators.required],
-  },
-  {
-    label:'Documento de Identidad',
-    name:'identity_doc',
-    type:'text',
-    defaultValue:'',
-    validations: [Validators.required],
-  },
-  {
-    label:'Nombre de la Compañía',
-    name:'company_name',
-    type:'text',
-    defaultValue:'',
-    validations: [],
-  },
-  {
-    label:'Nombre Comercial',
-    name:'comercial_name',
-    type:'text',
-    defaultValue:'',
-    validations: [],
-  },
+  new FormTextbox({
+    placeholder:'Primer Apellido',
+    value:'',
+    key: 'person_first_lastname',
+    label: 'Primer Apellido',
+    type: 'text',
+    validators:[Validators.required],
+    customError: []
+  }),
+  new FormTextbox({
+    placeholder:'Segundo Apellido',
+    value:'',
+    key: 'person_second_lastname',
+    label: 'Segundo Apellido',
+    type: 'text',
+    validators:[Validators.required,Validators.minLength(5) ,Validators.maxLength(15)],
+    customError: []
+  }),
+  new FormTextbox({
+    placeholder:'Email',
+    value:'',
+    key: 'email',
+    label: 'Correo Electrónico',
+    type: 'text',
+    validators:[Validators.required,Validators.email],
+    customError: []
+  }),
+  new FormTextbox({
+    placeholder:'Edad',
+    value:'',
+    key: 'age',
+    label: 'Edad',
+    type: 'number',
+    validators:[Validators.max(10), Validators.min(3)],
+    customError: []
+  }),
+  new FormTextbox({
+    placeholder:'Doc Iden.',
+    value:'',
+    key: ' identity_doc',
+    label: 'Doc Iden.',
+    type: 'string',
+    validators:[Validators.pattern('^[0-9]{8,8}[A-Za-z]$')],
+    customError: [{regex:'^[0-9]{8,8}[A-Za-z]$',msg:'El campo debe ser de formato DNI'}]
+  }),
+
 ];

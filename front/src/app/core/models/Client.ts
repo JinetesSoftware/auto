@@ -1,5 +1,6 @@
 export interface Client {
   cliente_code:number,
+  identity_doc_type: string, //NIE o CIF , Dropdown
   identity_doc: string,
   company_name:string,
   comercial_name:string,
@@ -7,6 +8,7 @@ export interface Client {
   person_first_lastname:string,
   person_second_lastname:string,
   birthdate:Date,
+  age:number,
   country:string,
   address:string,
   email:string,

@@ -13,7 +13,7 @@ export class FormInputBase<T> {
   validators: ValidatorFn[] | null;
   readonly: boolean;
   description?: string;
-  customError?: string[];
+  customError?: CustomError[];
 
   constructor(
     options: {
@@ -29,7 +29,7 @@ export class FormInputBase<T> {
       validators?: ValidatorFn[] | null;
       readonly?: boolean;
       description?: string;
-      customError?: string[];
+      customError?:CustomError[];
     } = {}
   ) {
     this.placeholder = options.placeholder;
@@ -46,4 +46,9 @@ export class FormInputBase<T> {
     this.description = options.description || '';
     this.customError = options.customError || [];
   }
+}
+
+export interface CustomError {
+  regex: string,
+  msg: string
 }
