@@ -11,6 +11,10 @@ export class DynamicFormComponent implements OnInit{
   @Input() submit = true;
   @Input() btnLabel = 'Enviar';
   @Input() btnMargin = '16px';
+  @Input() formLayout = 'column2';
+  @Input() sectionLayout = 'section2';
+  @Input() inputLayout = 'input1';
+
   @Output() formData = new EventEmitter();
 
   form!: FormGroup

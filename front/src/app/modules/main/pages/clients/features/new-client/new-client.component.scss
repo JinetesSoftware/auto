@@ -1,11 +1,12 @@
 .new-client {
   margin:20px;
   width: 95%;
-  height: 90vh;
+  min-height: 90vh;
   border-radius: 8px;
   -webkit-box-shadow: 3px 10px 31px 21px rgba(0,0,0,0.19);
 -moz-box-shadow: 3px 10px 31px 21px rgba(0,0,0,0.19);
 box-shadow: 3px 10px 31px 21px rgba(0,0,0,0.19);
+padding: 10px;
 &-title {
   padding-top: 20px;
   padding-left: 20px;
@@ -20,9 +21,14 @@ box-shadow: 3px 10px 31px 21px rgba(0,0,0,0.19);
 &-form {
   margin:10px;
   &__container {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
+}
+
+app-dynamic-form {
+  width: 100%;
 }

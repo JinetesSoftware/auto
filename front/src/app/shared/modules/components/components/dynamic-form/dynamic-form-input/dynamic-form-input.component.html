@@ -1,4 +1,4 @@
-<section [formGroup]="form">
+<section [formGroup]="form" ngClass="{{classInput}}">
 
 <mat-error  *ngIf="handleValidator() && showErrors" >
  <div *ngFor="let err of arrayErrors">

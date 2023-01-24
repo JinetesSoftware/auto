@@ -8,6 +8,7 @@ export interface Client {
   person_first_lastname:string,
   person_second_lastname:string,
   birthdate:Date,
+  register_date:Date,
   age:number,
   country:string,
   address:string,

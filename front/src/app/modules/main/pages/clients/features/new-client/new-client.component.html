@@ -4,13 +4,13 @@
   </div>
   <div class="new-client-form">
     <form class="new-client-form__container">
-      <div class="content content--left">
+
         <app-dynamic-form
           (formData)="saveClient($event)"
           [submit]="true"
           [formFields]=" registerInputs"
         ></app-dynamic-form>
-      </div>
+   
     </form>
   </div>
 </div>

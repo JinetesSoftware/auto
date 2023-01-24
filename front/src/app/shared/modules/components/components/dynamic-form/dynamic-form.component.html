@@ -1,6 +1,7 @@
-<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <section *ngFor="let field of formFields" class="form-row">
+<form ngClass="{{formLayout}}" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <section  *ngFor="let field of formFields" class="form-row">
     <app-dynamic-form-input
+    [classInput]="inputLayout"
       [field]="field"
       [form]="form"
     ></app-dynamic-form-input>
