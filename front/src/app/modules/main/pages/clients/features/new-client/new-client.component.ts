@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  FormControl, FormGroup } from '@angular/forms';
+import {  FormGroup } from '@angular/forms';
 import { INPUTS_FORMS } from './inputsForm';
 import { Client } from '../../../../../../core/models/Client';
 
@@ -12,6 +12,7 @@ export class NewClientComponent {
 
   registerInputs: any = INPUTS_FORMS;
   registerForm :FormGroup = new FormGroup({});
+
 
   constructor () {
   }

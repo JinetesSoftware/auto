@@ -11,7 +11,6 @@ import { FormInputBase } from '../models/form-input-base';
 export class DynamicFormInputComponent {
   @Input() field!: FormInputBase<any>;
   @Input() form!: FormGroup;
-  @Input() classInput!: any;
 
   arrayErrors: string[] | undefined = [];
   showErrors: boolean = false;

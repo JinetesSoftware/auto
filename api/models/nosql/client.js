@@ -10,15 +10,16 @@ const ClientSchema = new mongoose.Schema(
     person_name: { type: String, require: true },
     person_first_lastname: { type: String, require: true },
     person_second_lastname: { type: String, require: true },
-    birthdate: { type: Date, require: true },
+    birthdate: { type: Date },
     age: { type: Number }, // ?? calculamos con fecha
     country: { type: String },
     address: { type: String, require: true },
     email: { type: String, unique: true, require: true },
-    password: { type: String },
+    password: { type: String, require:true },
     phone_Number: { type: String },
-    date_start: { type: Date }, // timestamp
+    date_start: { type: Date, require:true }, // timestamp
     works: { type: mongoose.Types.ObjectId, required: false, ref: "works" },
+    docs: { type: mongoose.Types.ObjectId, required: false, ref: "works" },
     taxes: { type: Number },
     discount: { type: Number },
     apply_rates: { type: Number },

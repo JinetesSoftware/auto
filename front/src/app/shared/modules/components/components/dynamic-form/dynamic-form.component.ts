@@ -10,12 +10,13 @@ export class DynamicFormComponent implements OnInit{
   @Input() formFields: FormInputBase<any>[] | null = [];
   @Input() submit = true;
   @Input() btnLabel = 'Enviar';
+  @Input() btnLabel2 = 'Cancelar';
   @Input() btnMargin = '16px';
-  @Input() formLayout = 'column2';
-  @Input() sectionLayout = 'section2';
-  @Input() inputLayout = 'input1';
+  @Input() formLayout = '2';
+  @Input() inputLayout = '5:1';
 
   @Output() formData = new EventEmitter();
+  @Output() cancelForm = new EventEmitter();
 
   form!: FormGroup
 
@@ -30,12 +31,14 @@ export class DynamicFormComponent implements OnInit{
 
   onSubmit(): void {
     this.form.markAllAsTouched();
-
     if (this.form.invalid) {
       this.formData.emit({msg: 'form validation error'});
       return;
     }
     this.formData.emit(this.form.value);
+  }
+  onCancel = () => {
+   this.cancelForm.emit(false)
   }
 
   private toFormGroup(): void {
