@@ -12,7 +12,7 @@ export class DynamicFormComponent implements OnInit{
   @Input() btnLabel = 'Enviar';
   @Input() btnLabel2 = 'Cancelar';
   @Input() btnMargin = '16px';
-  @Input() formLayout = '2';
+  @Input() formLayout = '3';
   @Input() inputLayout = '5:1';
 
   @Output() formData = new EventEmitter();

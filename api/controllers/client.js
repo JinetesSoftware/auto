@@ -21,13 +21,9 @@ const getclient = async (req, res) => {
 };
 
 const createclient = async (req, res) => {
+  console.log('BODY',req.body);
   try {
-    const { tenant } = req;
     const { body } = req;
-    body = {
-      ...body,
-      tenant,
-    };
     const newclient = await clientModel.create(body);
 
     res.send({

@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-grid-list cols="{{ formLayout }}" rowHeight="{{ inputLayout }}">
+  <mat-grid-list [cols]="formLayout" [rowHeight]="inputLayout">
     <mat-grid-tile *ngFor="let field of formFields">
       <app-dynamic-form-input [field]="field" [form]="form"></app-dynamic-form-input>
     </mat-grid-tile>
