@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {  FormGroup } from '@angular/forms';
 import { INPUTS_FORMS } from './inputsForm';
 import { Client } from '../../../../../../core/models/Client';
+import { ClientsService } from '../../../../services/clients.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-client',
@@ -11,15 +13,21 @@ import { Client } from '../../../../../../core/models/Client';
 export class NewClientComponent {
 
   registerInputs: any = INPUTS_FORMS;
-  registerForm :FormGroup = new FormGroup({});
 
 
-  constructor () {
+
+  constructor (private clientService: ClientsService, private router:Router) {
   }
 
-  saveClient = (ev: Client) => {
-    if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+  saveClient = (client: Client) => {
+    this.clientService.postClient(client).subscribe((resp:any) => {
+      console.log('LLEGA AL FRONT', resp);
+
+    })
+  }
+  cancelForm = (ev: boolean) => {
+    if(!ev) {
+      this.router.navigate(['/app'])
     }
   }
 }

@@ -32,10 +32,11 @@ export class DynamicFormComponent implements OnInit{
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
-      this.formData.emit({msg: 'form validation error'});
+   console.log( 'form validation error');
       return;
     }
-    this.formData.emit(this.form.value);
+   this.formData.emit(this.form.value)
+
   }
   onCancel = () => {
    this.cancelForm.emit(false)

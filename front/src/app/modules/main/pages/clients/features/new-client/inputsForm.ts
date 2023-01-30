@@ -44,8 +44,8 @@ export  const INPUTS_FORMS = [
     key: 'password',
     label: 'Password',
     type: 'text',
-    validators:[Validators.required,Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$')],
-    customError: [{regex:'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$',msg:'Contraseña debe tener minúscula, mayúsculas,numeros y simbolo. Min 8 Max 15'}]
+    validators:[Validators.required,Validators.pattern('')],
+    customError: [{regex:'',msg:'Contraseña debe tener minúscula, mayúsculas,numeros y simbolo. Min 8 Max 15'}]
   }),
   new FormTextbox({
     placeholder:'Código cliente',
@@ -53,8 +53,8 @@ export  const INPUTS_FORMS = [
     key: 'client_code',
     label: 'Código',
     type: 'text',
-    validators:[Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]$')],
-    customError: [{regex:'^[0-9]$', msg:'El código solo debe contener números'}]
+    validators:[Validators.required,Validators.maxLength(10),Validators.min(2023001), Validators.max(9999999)],
+    customError: []
   }),
   new FormTextbox({
     placeholder:'Teléfono',
@@ -108,34 +108,43 @@ export  const INPUTS_FORMS = [
     key: 'identity_doc',
     label: 'Doc Iden.',
     type: 'string',
-    validators:[Validators.pattern('^[0-9]{8,8}[A-Za-z]$')],
+    validators:[Validators.required,Validators.pattern('^[0-9]{8,8}[A-Za-z]$')],
     customError: [{regex:'^[0-9]{8,8}[A-Za-z]$',msg:'El campo debe ser de formato DNI'}]
   }),
   //here
+  new FormTextbox({
+    placeholder:'Dirección',
+    value:'',
+    key: 'address',
+    label: 'Dirección física',
+    type: 'text',
+    validators:[Validators.required],
+    customError: []
+  }),
   new FormTextbox({
     placeholder:'Nombre Compañía',
     value:'',
     key: 'company_name',
     label: 'Nombre Compañía',
-    type: 'string',
+    type: 'text',
     validators:[],
     customError: []
   }),
   new FormTextbox({
     placeholder:'Nombre Comercial',
     value:'',
-    key: ' comercial_name',
+    key: 'comercial_name',
     label: 'Nombre Comercial',
-    type: 'string',
+    type: 'text',
     validators:[],
     customError: []
   }),
   new FormTextbox({
     placeholder:'País',
     value:'',
-    key: ' country',
+    key: 'country',
     label: 'País de procedencia',
-    type: 'string',
+    type: 'text',
     validators:[],
     customError: []
   }),
@@ -143,9 +152,9 @@ export  const INPUTS_FORMS = [
   new FormDropdown({
     placeholder:'Tipo de Impuesto',
     value:'',
-    key: ' taxes',
+    key: 'taxes',
     label: 'Impuesto',
-    type: 'string',
+    type: 'text',
     options:[{key:'IVA',value:'IVA'},{key:'IGIC',value:'IGIC'}],
     validators:[],
     customError: []
@@ -153,9 +162,9 @@ export  const INPUTS_FORMS = [
   new FormTextbox({
     placeholder:'Tarifa aplicada',
     value:'',
-    key: ' apply_rates',
+    key: 'apply_rates',
     label: 'Tarifa',
-    type: 'string',
+    type: 'text',
     validators:[],
     customError: []
   }),

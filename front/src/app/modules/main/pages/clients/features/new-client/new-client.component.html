@@ -8,7 +8,7 @@
         [formLayout]="'3'"
         [inputLayout]="'3:1'"
         (formData)="saveClient($event)"
-        (formData)="saveClient($event)"
+        (cancelForm)="cancelForm($event)"
         [submit]="true"
         [formFields]="registerInputs"
       ></app-dynamic-form>
