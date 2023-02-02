@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const ClientSchema = new mongoose.Schema(
   {
-    cliente_code: { type: String, unique: true, require: true },
+    client_code: { type: String, unique: true, require: true },
     identity_doc_type: { type: String, require: true },
     identity_doc: { type: String, unique: true, require: true },
     company_name: { type: String },

@@ -1,7 +1,7 @@
 const { clientModel } = require("../models");
 const { handleErrors } = require("../utils/handleErrors");
 
-const getclients = async (req, res) => {
+const getClients = async (req, res) => {
   try {
     const clients = await clientModel.find({});
     res.send({ clients });
@@ -10,7 +10,7 @@ const getclients = async (req, res) => {
   }
 };
 
-const getclient = async (req, res) => {
+const getClientById = async (req, res) => {
   try {
     const { id } = req.params;
     const client = await clientModel.findOneAndPopulate(id);
@@ -20,7 +20,7 @@ const getclient = async (req, res) => {
   }
 };
 
-const createclient = async (req, res) => {
+const createClient = async (req, res) => {
   console.log('BODY',req.body);
   try {
     const { body } = req;
@@ -35,7 +35,7 @@ const createclient = async (req, res) => {
   }
 };
 
-const desactivateclient = async (req, res) => {
+const desactivateClient = async (req, res) => {
   try {
     const { id } = req.params;
     const updated = await clientModel.findByIdAndUpdate(id, {
@@ -53,7 +53,7 @@ const desactivateclient = async (req, res) => {
   }
 };
 
-const updateclient = async (req, res) => {
+const updateClient = async (req, res) => {
   try {
     const { id } = req.params;
     const { body } = req;
@@ -69,9 +69,9 @@ const updateclient = async (req, res) => {
 };
 
 module.exports = {
-  getclients,
-  getclient,
-  createclient,
-  desactivateclient,
-  updateclient,
+  getClients,
+  getClientById,
+  createClient,
+  desactivateClient,
+  updateClient,
 };

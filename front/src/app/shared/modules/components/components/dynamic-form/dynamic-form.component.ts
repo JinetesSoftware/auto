@@ -36,7 +36,7 @@ export class DynamicFormComponent implements OnInit{
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
-  this.toastr.error('Han habido errores al rellenar el formulario')
+  this.toastr.error(`${this.messageToast1}`)
       return;
     }
    this.formData.emit(this.form.value)

@@ -74,15 +74,6 @@ export  const INPUTS_FORMS = [
     validators:[Validators.required],
     customError: []
   }),
-  new FormTextbox({
-    placeholder:'Edad',
-    value:'',
-    key: 'age',
-    label: 'Edad',
-    type: 'number',
-    validators:[Validators.max(99), Validators.min(18)],
-    customError: []
-  }),
   new FormDropdown({
     placeholder:'Tipo de Doc',
     value:'',

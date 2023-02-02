@@ -11,21 +11,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-client.component.scss'],
 })
 export class NewClientComponent implements OnInit {
+  newClient!: Client;
   numClients: number = 0;
   registerInputs: any = INPUTS_FORMS;
-
+  message: string =
+    'El formulario no se ha rellenado de forma correcta, revíselo';
   constructor(private clientService: ClientsService, private router: Router) {}
 
   ngOnInit() {
-    this.clientService.getClients().subscribe((clients: Client[]) => {
-      this.numClients = clients.length;
+    this.clientService.getClients().subscribe((clients: any) => {
+      this.numClients = clients.clients.length;
     });
   }
 
   saveClient = (client: Client) => {
-    console.log('Nuevo Cliente', client);
-    let newClient: Client = this.createCodeClient(client);
-    this.clientService.postClient(newClient).subscribe((resp: any) => {
+    this.newClient = client;
+    this.createCodeClient();
+    this.calculateAge();
+    this.clientService.postClient(this.newClient).subscribe((resp: any) => {
       if (resp.name) {
         this.router.navigate(['/app']);
       }
@@ -37,11 +40,21 @@ export class NewClientComponent implements OnInit {
     }
   };
 
-  createCodeClient = (client: Client) => {
+  createCodeClient = () => {
     let date = new Date();
-    let code = `${date.getFullYear()}${this.numClients + 1}`;
-    client.client_code = code;
-    return client;
+    let code = `${this.newClient.person_name}-${date.getFullYear()}-${this.numClients + 1}`;
+    this.newClient.client_code = code;
   };
-  calculateAge = (date: Date) => {};
+  calculateAge = () => {
+    if (!this.newClient.birthdate) {
+      return;
+    }
+    let date = new Date();
+    let birth = new Date(this.newClient.birthdate);
+    let miliSecondsDay = 60 * 60 * 1000 * 24;
+    let years =( date.getTime() - birth.getTime())/ miliSecondsDay;
+    years = Math.trunc(years / 365);
+    this.newClient.age = years;
+
+  };
 }
