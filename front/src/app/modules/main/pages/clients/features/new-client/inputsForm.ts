@@ -48,15 +48,6 @@ export  const INPUTS_FORMS = [
     customError: [{regex:'',msg:'Contraseña debe tener minúscula, mayúsculas,numeros y simbolo. Min 8 Max 15'}]
   }),
   new FormTextbox({
-    placeholder:'Código cliente',
-    value:'',
-    key: 'client_code',
-    label: 'Código',
-    type: 'text',
-    validators:[Validators.required,Validators.maxLength(10),Validators.min(2023001), Validators.max(9999999)],
-    customError: []
-  }),
-  new FormTextbox({
     placeholder:'Teléfono',
     value:'',
     key: 'phone_number',
@@ -81,15 +72,6 @@ export  const INPUTS_FORMS = [
     label: 'Fecha de Registro',
     type: 'date',
     validators:[Validators.required],
-    customError: []
-  }),
-  new FormTextbox({
-    placeholder:'Edad',
-    value:'',
-    key: 'age',
-    label: 'Edad',
-    type: 'number',
-    validators:[Validators.max(99), Validators.min(18)],
     customError: []
   }),
   new FormDropdown({

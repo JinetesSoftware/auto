@@ -8,19 +8,23 @@ import { FooterComponent } from './core/layout/footer/footer.component';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt-interceptor.interceptor';
-
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LoadingInterceptor } from './core/interceptors/loader-interceptor.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
-  declarations: [AppComponent, FooterComponent],
+  declarations: [AppComponent, FooterComponent, LoaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ToastrModule.forRoot()
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
 })
 export class AppModule {}

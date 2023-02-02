@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormInputBase } from './models/form-input-base';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -12,7 +13,9 @@ export class DynamicFormComponent implements OnInit{
   @Input() btnLabel = 'Enviar';
   @Input() btnLabel2 = 'Cancelar';
   @Input() btnMargin = '16px';
-  @Input() formLayout = '2';
+  @Input() messageToast1 = '';
+  @Input() messageToast2 = '';
+  @Input() formLayout = '3';
   @Input() inputLayout = '5:1';
 
   @Output() formData = new EventEmitter();
@@ -20,6 +23,7 @@ export class DynamicFormComponent implements OnInit{
 
   form!: FormGroup
 
+  constructor (private toastr: ToastrService) {}
   ngOnInit(): void {
     this.toFormGroup();
   }
@@ -32,7 +36,7 @@ export class DynamicFormComponent implements OnInit{
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
-   console.log( 'form validation error');
+  this.toastr.error(`${this.messageToast1}`)
       return;
     }
    this.formData.emit(this.form.value)
