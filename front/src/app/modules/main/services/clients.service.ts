@@ -32,10 +32,10 @@ export class ClientsService {
   }
 
   postClient = (client: Client) => {
-    return this.http.post<Client>(`${this.apiURL}/client/create`, client).pipe(
+    return this.http.post<any>(`${this.apiURL}/client/create`, client).pipe(
       tap((resp) => {
         if (resp) {
-          this.toastr.success(`Se ha creado un nuevo cliente, ${resp.person_name}`)
+          this.toastr.success(`Se ha creado un nuevo cliente, ${resp.newclient.person_name}`)
         }
       }),
       catchError((e) =>{

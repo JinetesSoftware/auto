@@ -155,7 +155,7 @@ export  const INPUTS_FORMS = [
     value:'',
     key: 'discount',
     label: 'Descuentos',
-    type: 'number',
+    type: 'text',
     validators:[],
     customError: []
   }),

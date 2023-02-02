@@ -29,8 +29,10 @@ export class NewClientComponent implements OnInit {
     this.createCodeClient();
     this.calculateAge();
     this.clientService.postClient(this.newClient).subscribe((resp: any) => {
+      console.log('NUEVO CLIENTE',resp);
       if (resp.name) {
         this.router.navigate(['/app']);
+        this.numClients++;
       }
     });
   };

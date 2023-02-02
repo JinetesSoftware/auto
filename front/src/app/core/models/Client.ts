@@ -17,9 +17,9 @@ export interface Client {
   date_start:Date,
   works:Doc[],
   docs:Doc[],
-  taxes:number,
-  discount:number,
-  apply_rates:number,
+  taxes:number | string,
+  discount:number | string,
+  apply_rates:number | string,
 
 }
 
