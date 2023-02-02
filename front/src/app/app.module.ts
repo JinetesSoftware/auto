@@ -10,7 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt-interceptor.interceptor';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { LoadingInterceptor } from './core/interceptors/loader-interceptor.interceptor';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [AppComponent, FooterComponent, LoaderComponent],
   imports: [
@@ -19,6 +19,7 @@ import { LoadingInterceptor } from './core/interceptors/loader-interceptor.inter
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ToastrModule.forRoot()
   ],
   bootstrap: [AppComponent],
   providers: [

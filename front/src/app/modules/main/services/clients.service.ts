@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, catchError, of } from 'rxjs';
 import { Client } from '../../../core/models/Client';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,38 @@ export class ClientsService {
 
  apiURL:string = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastr: ToastrService) { }
 
-  getClients = () => {}
+  getClients = ():Observable<any> => {
+    return this.http.get<Client[]>(`${this.apiURL}/client`).pipe(
+      tap((resp) => {
+        if (resp) {
+          this.toastr.success(`Se han cargado los clientes con éxito`)
+        }
+      }),
+      catchError((e: any) =>{
+        console.error(e);
+        if (e) {
+          this.toastr.error('Ha habido un error al cargar los clientes')
+          return e;
+        }
+      })
+    )
+  }
 
   postClient = (client: Client) => {
-    console.log('PASO POR AQUI');
     return this.http.post<Client>(`${this.apiURL}/client/create`, client).pipe(
       tap((resp) => {
         if (resp) {
-          console.log('ALL OK');
-          return;
+          this.toastr.success(`Se ha creado un nuevo cliente, ${resp.person_name}`)
         }
-        console.log('NOT OK');
-
+      }),
+      catchError((e) =>{
+        console.error(e);
+        if(e) {
+          this.toastr.error('Ha habido un error al generar el nuevo cliente')
+          return e;
+        }
       })
     )
   }
