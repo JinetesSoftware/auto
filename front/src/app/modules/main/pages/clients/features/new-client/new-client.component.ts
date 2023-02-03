@@ -4,6 +4,7 @@ import { INPUTS_FORMS } from './inputsForm';
 import { Client } from '../../../../../../core/models/Client';
 import { ClientsService } from '../../../../services/clients.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-client',
@@ -16,7 +17,7 @@ export class NewClientComponent implements OnInit {
   registerInputs: any = INPUTS_FORMS;
   message: string =
     'El formulario no se ha rellenado de forma correcta, revíselo';
-  constructor(private clientService: ClientsService, private router: Router) {}
+  constructor(private clientService: ClientsService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit() {
     this.clientService.getClients().subscribe((clients: any) => {
@@ -30,10 +31,12 @@ export class NewClientComponent implements OnInit {
     this.calculateAge();
     this.clientService.postClient(this.newClient).subscribe((resp: any) => {
       console.log('NUEVO CLIENTE',resp);
-      if (resp.name) {
+      if (resp.newclient.person_name) {
         this.router.navigate(['/app']);
         this.numClients++;
+        return;
       }
+      this.toastr.error('Se ha generado un error al crear un nuevo cliente');
     });
   };
   cancelForm = (ev: boolean) => {

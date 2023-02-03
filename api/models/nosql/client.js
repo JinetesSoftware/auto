@@ -20,9 +20,9 @@ const ClientSchema = new mongoose.Schema(
     date_start: { type: Date, require:true }, // timestamp
     works: { type: mongoose.Types.ObjectId, required: false, ref: "works" },
     docs: { type: mongoose.Types.ObjectId, required: false, ref: "works" },
-    taxes: { type: Number },
-    discount: { type: Number },
-    apply_rates: { type: Number },
+    taxes: { type: Number | String },
+    discount: { type: Number | String },
+    apply_rates: { type: Number |String },
     status: { type: Boolean, default: true },
   },
   {

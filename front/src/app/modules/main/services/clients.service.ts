@@ -39,7 +39,7 @@ export class ClientsService {
         }
       }),
       catchError((e) =>{
-        console.error(e);
+        console.error('ERROR DEL POST',e);
         if(e) {
           this.toastr.error('Ha habido un error al generar el nuevo cliente')
           return e;

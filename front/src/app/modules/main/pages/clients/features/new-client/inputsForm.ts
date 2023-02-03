@@ -52,9 +52,9 @@ export  const INPUTS_FORMS = [
     value:'',
     key: 'phone_number',
     label: 'Número de teléfono',
-    type: 'text',
-    validators:[Validators.pattern('^[09][0-9]{1,7}$')],
-    customError: [{regex:'^[09][0-9]{1,7}$',msg:'Debe introducir un formato de telefono válido'}]
+    type: 'number',
+    validators:[Validators.maxLength(14), Validators.maxLength(9)],
+    customError: []
   }),
   new FormTextbox({
     placeholder:'Fecha Nacimiento',
