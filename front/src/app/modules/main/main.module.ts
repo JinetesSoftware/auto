@@ -5,6 +5,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { HeaderComponent } from 'src/app/core/layout/header/header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,8 @@ import { HeaderComponent } from 'src/app/core/layout/header/header.component';
     CommonModule,
     MainRoutingModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports:[HeaderComponent]
 })

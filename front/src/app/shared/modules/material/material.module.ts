@@ -97,6 +97,8 @@ const COMPONENTS = [
   PortalModule,
   ScrollingModule,
   DialogModule,
+  MatFormFieldModule,
+  MatInputModule
 ];
 
 @NgModule({

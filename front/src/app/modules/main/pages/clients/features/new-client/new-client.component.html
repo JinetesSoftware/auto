@@ -1,1 +1,18 @@
-<p>new-client works!</p>
+<div class="new-client">
+  <div class="new-client-title">
+    <h2>Registro cliente</h2>
+  </div>
+  <div class="new-client-form">
+    <form class="new-client-form__container">
+      <app-dynamic-form
+        [formLayout]="'3'"
+        [inputLayout]="'3:1'"
+        (formData)="saveClient($event)"
+        (cancelForm)="cancelForm($event)"
+        [submit]="true"
+        [formFields]="registerInputs"
+        [messageToast1]="message"
+      ></app-dynamic-form>
+    </form>
+  </div>
+</div>

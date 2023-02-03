@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-grid-list [cols]="formLayout" [rowHeight]="inputLayout">
+    <mat-grid-tile *ngFor="let field of formFields">
+      <app-dynamic-form-input [field]="field" [form]="form"></app-dynamic-form-input>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="button_group">
+
+    <button *ngIf="this.submit" type="submit" mat-flat-button color="primary" class="button_layout">
+      {{ btnLabel }}
+    </button>
+
+    <button *ngIf="this.submit" mat-stroked-button color="warn" (click)="onCancel()" class="button_layout">
+      {{ btnLabel2 }}
+    </button>
+
+  </div>
+</form>

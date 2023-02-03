@@ -7,20 +7,23 @@ import { NewClientComponent } from './features/new-client/new-client.component';
 import { WorkOrdersComponent } from './features/work-orders/work-orders.component';
 import { BillingComponent } from './features/billing/billing.component';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from 'src/app/shared/modules/components/components.module';
 
 @NgModule({
   declarations: [
     ClientsComponent,
     NewClientComponent,
     WorkOrdersComponent,
-    BillingComponent
+    BillingComponent,
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ClientsRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ComponentsModule,
   ],
 })
-export class ClientsModule { }
+export class ClientsModule {}

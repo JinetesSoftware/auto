@@ -1,0 +1,9 @@
+.errorMessage {
+  color: var(--alert);
+  font-size: 12px;
+  font-family: var(--font-family);
+}
+
+mat-form-field {
+  min-width: 20vw;
+}
