@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs';
+import { Client } from 'src/app/core/models/Client';
 import { ClientsService } from 'src/app/modules/main/services/clients.service';
 
 @Component({
@@ -8,14 +9,20 @@ import { ClientsService } from 'src/app/modules/main/services/clients.service';
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent {
+clients: Client[] = [];
+displayedColumns: any = ['person_name','email','phone_number']
+  constructor(private clientService: ClientsService) {
+    this.clientService.getClients().subscribe((resp) => {
+      if (resp) {
+        this.clients = resp.clients;
+        console.log('Clientes',this.clients);
+      }
+    })
+   }
 
-  constructor(private c: ClientsService) { }
-  testData!: string;
 
   testReq() {
-    this.c.testReq().pipe(map(res => res.msg)).subscribe(res => {
-      this.testData = res;
-    });
+
 
   }
 
