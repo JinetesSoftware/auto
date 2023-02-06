@@ -11,8 +11,12 @@ export class MainComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
+        console.log(val);
+        if (val.id === 3) {
+          this.url = `${val.url}/client`;
+          return;
+        }
         this.url = val.url;
-        console.log(this.url);
       }
     });
   }
