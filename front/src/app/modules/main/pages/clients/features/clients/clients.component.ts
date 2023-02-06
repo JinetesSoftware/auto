@@ -10,7 +10,7 @@ import { ClientsService } from 'src/app/modules/main/services/clients.service';
 })
 export class ClientsComponent {
 clients: Client[] = [];
-displayedColumns: any = ['person_name','email','phone_number']
+displayedColumns: any = ['person_name','email','comercial_name','phone_number','icon']
   constructor(private clientService: ClientsService) {
     this.clientService.getClients().subscribe((resp) => {
       if (resp) {
@@ -21,7 +21,11 @@ displayedColumns: any = ['person_name','email','phone_number']
    }
 
 
-  testReq() {
+  deleteClient() {
+
+
+  }
+  updateClient() {
 
 
   }

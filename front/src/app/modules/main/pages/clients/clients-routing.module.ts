@@ -8,18 +8,23 @@ import { BillingComponent } from './features/billing/billing.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo:"client/clients",
+    pathMatch:'full'
+  },
+  {
+    path: 'client/clients',
     component: ClientsComponent,
   },
   {
-    path: 'new-client',
+    path: 'client/new-client',
     component: NewClientComponent,
   },
   {
-    path: 'work-orders',
+    path: 'client/work-orders',
     component: WorkOrdersComponent,
   },
   {
-    path: 'billing',
+    path: 'client/billing',
     component: BillingComponent,
   },
 ];

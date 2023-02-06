@@ -12,7 +12,9 @@
 
 .icon {
     &--black {
-        color: black;
+      margin:5px;
+      font-size: 25px;
+      color: black;
     }
 }
 
@@ -29,16 +31,11 @@
         transition: 250ms;
     }
     &:hover {
-        background-color: rgb(246, 245, 245);
+        background-color: rgb(229, 173, 173);
         transition: 250ms;
         cursor: pointer;
     }
 }
-
-.isActive {
-    color: red;
-}
-
 
 ::ng-deep{
     .menusub{
@@ -46,7 +43,18 @@
     left: 80%;
     position: absolute;
     background-color: white;
-
-
+    &__link{
+      color: black;
+      margin: 0;
+      padding: 0;
+      transition: 250ms;
+      &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      &-actived{
+        color: red;
+      }
+    }
     }
 }
