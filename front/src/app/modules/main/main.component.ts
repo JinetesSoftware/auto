@@ -11,18 +11,13 @@ export class MainComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        console.log(val);
-        if (val.id === 3) {
-          this.url = `${val.url}/client`;
-          return;
-        }
         this.url = val.url;
       }
     });
   }
 
   isOpen = true;
-  url!: string;
+  url = '';
   navLinks: navLinks[] = [
     {
       name: 'Clients',
@@ -60,6 +55,7 @@ export class MainComponent {
   ];
 
   navigate(url: string) {
+    console.log(url);
     this.router.navigate([url]);
   }
 

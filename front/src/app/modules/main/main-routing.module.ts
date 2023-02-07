@@ -10,8 +10,15 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
+          import('./pages/clients/clients.module').then((m) => m.ClientsModule), // TODO: DASHBOARD GENERAL INFO
+      },
+
+      {
+        path: 'client',
+        loadChildren: () =>
           import('./pages/clients/clients.module').then((m) => m.ClientsModule),
       },
+
       {
         path: 'planning',
         loadChildren: () =>
@@ -19,6 +26,7 @@ const routes: Routes = [
             (m) => m.PlanningModule
           ),
       },
+
       {
         path: 'works',
         loadChildren: () =>

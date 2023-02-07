@@ -17,7 +17,6 @@ import { ComponentsModule } from './shared/modules/components/components.module'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
     HttpClientModule,
     ComponentsModule,
     ToastrModule.forRoot()

@@ -2,7 +2,7 @@
   <div class="clients-title">
     <h2>Listado clientes</h2>
   </div>
-  <div *ngIf="!clients.length; else clientsTable">
+  <div *ngIf="!clients!.length; else clientsTable">
     <p>No se encuentran clientes en la BBDD</p>
   </div>
   <ng-template #clientsTable>
@@ -33,7 +33,7 @@
           <mat-icon class="icon--black" (click)="updateClient()"
             >border_color</mat-icon
           >
-          <mat-icon class="icon--red" (click)="(deleteClient)"
+          <mat-icon class="icon--red" (click)="deleteClient()"
             >delete_outline</mat-icon
           >
         </td>

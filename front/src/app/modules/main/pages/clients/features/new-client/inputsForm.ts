@@ -1,6 +1,6 @@
 import { Validators } from '@angular/forms';
-import { FormTextbox } from '../../../../../../shared/modules/components/components/dynamic-form/models/form-textbox';
-import { FormDropdown } from '../../../../../../shared/modules/components/components/dynamic-form/models/form-dropdown';
+import { FormTextbox } from '../../../../../../shared/modules/components/dynamic-form/models/form-textbox';
+import { FormDropdown } from '../../../../../../shared/modules/components/dynamic-form/models/form-dropdown';
 export  const INPUTS_FORMS = [
   new FormTextbox({
     placeholder:'Nombre',

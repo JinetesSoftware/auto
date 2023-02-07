@@ -1,5 +1,5 @@
 import { ValidatorFn, FormGroup } from '@angular/forms';
-import { CustomError, FormInputBase } from '../modules/components/components/dynamic-form/models/form-input-base';
+import { CustomError, FormInputBase } from '../modules/components/dynamic-form/models/form-input-base';
 
 export const handleValidatorName = (
   errorObj: any,

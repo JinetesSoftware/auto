@@ -16,7 +16,7 @@
         [activated]="url.includes(navLink.url)"
         [matMenuTriggerFor]="navLink.submenus?.length ? sub_menu : null"
         *ngFor="let navLink of navLinks; let i = index"
-        (click)="navLink.submenus?.length ?  '' : navigate(navLink.url) "
+        (click)="navLink.submenus?.length ? '' : navigate(navLink.url)"
         role="listitem"
       >
         <mat-icon class="icon--black" matListItemIcon>
@@ -36,7 +36,15 @@
             (click)="navigate(submenu.url)"
             mat-menu-item
           >
-            <p  class="menusub__link" [ngClass]="{'menusub__link-actived':submenu.url === url, 'menusub__link':submenu.url !== url}" >{{ submenu.name }}</p>
+            <p
+              class="menusub__link"
+              [ngClass]="{
+                'menusub__link-actived': submenu.url === url,
+                menusub__link: submenu.url !== url
+              }"
+            >
+              {{ submenu.name }}
+            </p>
           </button>
         </mat-menu>
       </mat-list-item>
