@@ -53,7 +53,7 @@ export  const INPUTS_FORMS = [
     key: 'phone_number',
     label: 'Número de teléfono',
     type: 'number',
-    validators:[Validators.maxLength(14), Validators.maxLength(9)],
+    validators:[Validators.required,Validators.maxLength(14), Validators.maxLength(9)],
     customError: []
   }),
   new FormTextbox({
