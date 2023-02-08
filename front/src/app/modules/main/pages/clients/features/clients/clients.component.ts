@@ -3,6 +3,7 @@ import { firstValueFrom, map } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
 import { ClientsService } from 'src/app/modules/main/services/clients.service';
 import { ModalService } from '../../../../../../shared/services/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
@@ -23,6 +24,7 @@ export class ClientsComponent {
 
   constructor(
     private clientService: ClientsService,
+    private router:Router,
     private modalService: ModalService
   ) {
     this.clientService.getClients().subscribe((resp) => {
@@ -62,7 +64,7 @@ export class ClientsComponent {
     this.modalService.close();
   }
 
-  updateClient() {
-    console.log('Update');
+  updateClient(id: string) {
+    this.router.navigate(['/app/client/update-client',id])
   }
 }

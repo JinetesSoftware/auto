@@ -30,7 +30,7 @@
       <ng-container matColumnDef="icon">
         <th mat-header-cell *matHeaderCellDef>Opciones</th>
         <td mat-cell *matCellDef="let element">
-          <mat-icon class="icon--black" (click)="updateClient()"
+          <mat-icon class="icon--black" (click)="updateClient(element._id)"
             >border_color</mat-icon
           >
           <mat-icon class="icon--red" (click)="openDeleteModal(element)"
