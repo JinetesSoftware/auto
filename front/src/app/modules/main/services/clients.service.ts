@@ -22,7 +22,7 @@ export class ClientsService {
         }
       }),
       catchError((e: any) =>{
-        console.error(e);
+        console.error('ERROR DEL GET',e);
         if (e) {
           this.toastr.error('Ha habido un error al cargar los clientes')
           return e;
@@ -47,7 +47,22 @@ export class ClientsService {
       })
     )
   }
-  putClient = () => {}
+  desactivatedClient = (client: Client) => {
+    return this.http.put<any>(`${this.apiURL}/client/delete/${client._id}`, client).pipe(
+      tap((resp) => {
+        if (resp) {
+          this.toastr.success(`Cliente desactivado, ${client.person_name}`)
+        }
+      }),
+      catchError((e) =>{
+        console.error('ERROR DEL PUST',e);
+        if(e) {
+          this.toastr.error(`Ha habido un error al desactivar al cliente ${client.person_name}`)
+          return e;
+        }
+      })
+    )
+  }
   deleteClients = () => {}
 
   testReq(){

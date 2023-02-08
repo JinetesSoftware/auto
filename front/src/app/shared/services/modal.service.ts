@@ -5,13 +5,16 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalService {
-private display: BehaviorSubject<any> = new BehaviorSubject(false)
+display: BehaviorSubject<boolean> = new BehaviorSubject(false)
   constructor() { }
 
   open = () => {
     this.display.next(true);
+   console.log('PASO POR AQUI open');
+
   }
   close = () => {
     this.display.next(false);
+    console.log('PASO POR AQUI close');
   }
 }

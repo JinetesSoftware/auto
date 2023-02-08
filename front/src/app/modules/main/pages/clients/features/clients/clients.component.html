@@ -33,7 +33,7 @@
           <mat-icon class="icon--black" (click)="updateClient()"
             >border_color</mat-icon
           >
-          <mat-icon class="icon--red" (click)="deleteClient()"
+          <mat-icon class="icon--red" (click)="openDeleteModal(element)"
             >delete_outline</mat-icon
           >
         </td>
@@ -43,3 +43,6 @@
     </table>
   </ng-template>
 </div>
+<app-modal [titleModal]="titleModal" [btn1Visible]="true" [btnLabel]="'Eliminar'" (modalAction)="deleteClient($event)">
+  <p>¿Desea eliminar el cliente {{clientUses?.person_name}}?</p>
+</app-modal>

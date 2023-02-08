@@ -15,7 +15,7 @@ const { validateClientItem } = require("../validators/client");
 router.get("/", [], getClients);
 router.get("/:id", [checkAuth], getClientById);
 router.post("/create", [validateClientItem], createClient);
-router.put("update/:id", [validateClientItem], updateClient);
-router.put("delete/:id", [validateClientItem], desactivateClient);
+router.put("/update/:id", [validateClientItem], updateClient);
+router.put("/delete/:id", [validateClientItem], desactivateClient);
 
 module.exports = router;

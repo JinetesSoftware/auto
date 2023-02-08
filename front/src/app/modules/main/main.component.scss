@@ -1,3 +1,4 @@
+
 .content {
     position: relative;
     height: 100vh;
@@ -6,8 +7,9 @@
 }
 
 .sidebar {
-    width: 350px;
+    width: 270px;
     background-color: white;
+    z-index: 1;
 }
 
 .icon {
@@ -57,4 +59,7 @@
       }
     }
     }
+}
+.mat-drawer.mat-drawer-side {
+  z-index: 1;
 }

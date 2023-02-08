@@ -1,4 +1,5 @@
 export interface Client {
+  _id:string;
   client_code:string,
   identity_doc_type: string, //NIE o CIF , Dropdown
   identity_doc: string,
@@ -20,7 +21,7 @@ export interface Client {
   taxes:number | string,
   discount:number | string,
   apply_rates:number | string,
-
+status:boolean;
 }
 
 export interface Doc {
