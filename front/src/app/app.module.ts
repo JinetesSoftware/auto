@@ -8,17 +8,17 @@ import { FooterComponent } from './core/layout/footer/footer.component';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt-interceptor.interceptor';
-import { LoaderComponent } from './shared/components/loader/loader.component';
 import { LoadingInterceptor } from './core/interceptors/loader-interceptor.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { ComponentsModule } from './shared/modules/components/components.module';
 @NgModule({
-  declarations: [AppComponent, FooterComponent, LoaderComponent],
+  declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
     HttpClientModule,
+    ComponentsModule,
     ToastrModule.forRoot()
   ],
   bootstrap: [AppComponent],

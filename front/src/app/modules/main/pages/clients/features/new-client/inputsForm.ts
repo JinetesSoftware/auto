@@ -1,6 +1,6 @@
 import { Validators } from '@angular/forms';
-import { FormTextbox } from '../../../../../../shared/modules/components/components/dynamic-form/models/form-textbox';
-import { FormDropdown } from '../../../../../../shared/modules/components/components/dynamic-form/models/form-dropdown';
+import { FormTextbox } from '../../../../../../shared/modules/components/dynamic-form/models/form-textbox';
+import { FormDropdown } from '../../../../../../shared/modules/components/dynamic-form/models/form-dropdown';
 export  const INPUTS_FORMS = [
   new FormTextbox({
     placeholder:'Nombre',
@@ -8,6 +8,7 @@ export  const INPUTS_FORMS = [
     key: 'person_name',
     label: 'Nombre',
     type: 'text',
+    disabled:false,
     validators:[Validators.required,Validators.minLength(2) ,Validators.maxLength(15)],
     customError: []
   }),
@@ -16,7 +17,7 @@ export  const INPUTS_FORMS = [
     value:'',
     key: 'person_first_lastname',
     label: 'Primer Apellido',
-    type: 'text',
+    type: 'text', disabled:false,
     validators:[Validators.required,Validators.minLength(3) ,Validators.maxLength(25)],
     customError: []
   }),
@@ -26,6 +27,7 @@ export  const INPUTS_FORMS = [
     key: 'person_second_lastname',
     label: 'Segundo Apellido',
     type: 'text',
+    disabled:false,
     validators:[Validators.required,Validators.minLength(3) ,Validators.maxLength(25)],
     customError: []
   }),
@@ -35,6 +37,7 @@ export  const INPUTS_FORMS = [
     key: 'email',
     label: 'Correo Electrónico',
     type: 'text',
+    disabled:false,
     validators:[Validators.required,Validators.email],
     customError: []
   }),
@@ -44,6 +47,7 @@ export  const INPUTS_FORMS = [
     key: 'password',
     label: 'Password',
     type: 'text',
+    disabled:false,
     validators:[Validators.required,Validators.pattern('')],
     customError: [{regex:'',msg:'Contraseña debe tener minúscula, mayúsculas,numeros y simbolo. Min 8 Max 15'}]
   }),
@@ -53,8 +57,9 @@ export  const INPUTS_FORMS = [
     key: 'phone_number',
     label: 'Número de teléfono',
     type: 'text',
-    validators:[Validators.pattern('^[09][0-9]{1,7}$')],
-    customError: [{regex:'^[09][0-9]{1,7}$',msg:'Debe introducir un formato de telefono válido'}]
+    disabled:false,
+    validators:[Validators.required,Validators.maxLength(14), Validators.maxLength(9)],
+    customError: []
   }),
   new FormTextbox({
     placeholder:'Fecha Nacimiento',
@@ -62,6 +67,7 @@ export  const INPUTS_FORMS = [
     key: 'birthdate',
     label: 'Fecha Nacimiento',
     type: 'date',
+    disabled:false,
     validators:[],
     customError: []
   }),
@@ -71,6 +77,7 @@ export  const INPUTS_FORMS = [
     key: 'date_start',
     label: 'Fecha de Registro',
     type: 'date',
+    disabled:false,
     validators:[Validators.required],
     customError: []
   }),
@@ -80,6 +87,7 @@ export  const INPUTS_FORMS = [
     key: 'identity_doc_type',
     label: 'Tipo de Doc',
     type: 'string',
+    disabled:false,
     validators:[Validators.required],
     options:[{key:'NIE',value:'NIE'},{key:'CIF',value:'CIF'}],
     customError: []
@@ -90,8 +98,9 @@ export  const INPUTS_FORMS = [
     key: 'identity_doc',
     label: 'Doc Iden.',
     type: 'string',
-    validators:[Validators.required,Validators.pattern('^[0-9]{8,8}[A-Za-z]$')],
-    customError: [{regex:'^[0-9]{8,8}[A-Za-z]$',msg:'El campo debe ser de formato DNI'}]
+    disabled:false,
+    validators:[Validators.required,Validators.maxLength(12)],
+    customError: []
   }),
   //here
   new FormTextbox({
@@ -100,6 +109,7 @@ export  const INPUTS_FORMS = [
     key: 'address',
     label: 'Dirección física',
     type: 'text',
+    disabled:false,
     validators:[Validators.required],
     customError: []
   }),
@@ -109,6 +119,7 @@ export  const INPUTS_FORMS = [
     key: 'company_name',
     label: 'Nombre Compañía',
     type: 'text',
+    disabled:false,
     validators:[],
     customError: []
   }),
@@ -118,6 +129,7 @@ export  const INPUTS_FORMS = [
     key: 'comercial_name',
     label: 'Nombre Comercial',
     type: 'text',
+    disabled:false,
     validators:[],
     customError: []
   }),
@@ -127,6 +139,7 @@ export  const INPUTS_FORMS = [
     key: 'country',
     label: 'País de procedencia',
     type: 'text',
+    disabled:false,
     validators:[],
     customError: []
   }),
@@ -137,6 +150,7 @@ export  const INPUTS_FORMS = [
     key: 'taxes',
     label: 'Impuesto',
     type: 'text',
+    disabled:false,
     options:[{key:'IVA',value:'IVA'},{key:'IGIC',value:'IGIC'}],
     validators:[],
     customError: []
@@ -147,6 +161,7 @@ export  const INPUTS_FORMS = [
     key: 'apply_rates',
     label: 'Tarifa',
     type: 'text',
+    disabled:false,
     validators:[],
     customError: []
   }),
@@ -156,6 +171,7 @@ export  const INPUTS_FORMS = [
     key: 'discount',
     label: 'Descuentos',
     type: 'text',
+    disabled:false,
     validators:[],
     customError: []
   }),

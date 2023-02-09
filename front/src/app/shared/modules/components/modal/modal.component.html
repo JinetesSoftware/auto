@@ -1,0 +1,23 @@
+<div class="back" *ngIf="display" (click)="close()">
+	<section >
+		<div (click)="$event.stopPropagation()">
+			<h1 class="title">{{ titleModal }}</h1>
+			<button class="close" type="button" (click)="close()">
+				Cerrar
+			</button>
+			<hr class="line" />
+			<div class="content">
+				<ng-content></ng-content>
+			</div>
+      <div class="button_group">
+        <button *ngIf="btn1Visible" mat-flat-button color="primary" class="button_layout" (click)="modalAct()">
+          {{ btnLabel }}
+        </button>
+
+        <button *ngIf="btn2Visible" mat-stroked-button color="warn" (click)="close()" class="button_layout">
+          Cancelar
+        </button>
+      </div>
+		</div>
+	</section>
+</div>

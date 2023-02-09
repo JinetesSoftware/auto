@@ -17,7 +17,7 @@ export class DynamicFormComponent implements OnInit{
   @Input() messageToast2 = '';
   @Input() formLayout = '3';
   @Input() inputLayout = '5:1';
-
+ 
   @Output() formData = new EventEmitter();
   @Output() cancelForm = new EventEmitter();
 

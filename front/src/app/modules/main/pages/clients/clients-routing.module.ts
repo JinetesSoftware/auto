@@ -4,23 +4,37 @@ import { ClientsComponent } from './features/clients/clients.component';
 import { NewClientComponent } from './features/new-client/new-client.component';
 import { WorkOrdersComponent } from './features/work-orders/work-orders.component';
 import { BillingComponent } from './features/billing/billing.component';
+import { UpdateComponent } from './features/update/update.component';
+import { GetClientByIdResolver } from './clients.resolver';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo:"client/clients",
+    pathMatch:'full'
+  },
+  {
+    path: 'client/clients',
     component: ClientsComponent,
   },
   {
-    path: 'new-client',
+    path: 'client/new-client',
     component: NewClientComponent,
   },
   {
-    path: 'work-orders',
+    path: 'client/work-orders',
     component: WorkOrdersComponent,
   },
   {
-    path: 'billing',
+    path: 'client/billing',
     component: BillingComponent,
+  },
+  {
+    path: 'client/update/:id',
+    component: UpdateComponent,
+    resolve: {
+      data: GetClientByIdResolver
+    }
   },
 ];
 

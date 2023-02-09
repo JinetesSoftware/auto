@@ -1,0 +1,39 @@
+<div class="update-client">
+  <div class="update-client-header">
+    <div class="update-client-title">
+      <h2>Editar Cliente </h2>
+      <h4 class="update-client-subtitle">{{client.person_name}}</h4>
+    </div>
+    <mat-form-field
+        class="form-field"
+        appearance="fill"
+      >
+        <mat-label > Código </mat-label>
+        <input
+          matInput
+         [value]="client.client_code"
+          [readonly]="true"
+          placeholder="'Código Cliente'"
+          [disabled]="true"
+        />
+      </mat-form-field>
+  </div>
+
+  <div class="update-client-form">
+    <form class="update-client-form__container">
+      <app-dynamic-form
+      [btnLabel]="'Guardar'"
+        [formLayout]="'3'"
+        [inputLayout]="'3:1'"
+        (formData)="updateClient($event)"
+        (cancelForm)="cancelForm($event)"
+        [submit]="true"
+        [formFields]="fields"
+        [messageToast1]="
+          'El formulario no se ha rellenado de forma correcta, revíselo'
+        "
+      ></app-dynamic-form>
+    </form>
+  </div>
+  <app-input-file></app-input-file>
+</div>

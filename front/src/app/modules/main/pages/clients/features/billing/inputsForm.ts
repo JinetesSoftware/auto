@@ -1,9 +1,9 @@
 import { Validators } from '@angular/forms';
-import { FormCheckbox } from 'src/app/shared/modules/components/components/dynamic-form/models/form-checkbox';
-import { FormDropdown } from 'src/app/shared/modules/components/components/dynamic-form/models/form-dropdown';
-import { FormInputBase } from 'src/app/shared/modules/components/components/dynamic-form/models/form-input-base';
-import { FormTextarea } from 'src/app/shared/modules/components/components/dynamic-form/models/form-textarea';
-import { FormTextbox } from 'src/app/shared/modules/components/components/dynamic-form/models/form-textbox';
+import { FormCheckbox } from 'src/app/shared/modules/components/dynamic-form/models/form-checkbox';
+import { FormDropdown } from 'src/app/shared/modules/components/dynamic-form/models/form-dropdown';
+import { FormInputBase } from 'src/app/shared/modules/components/dynamic-form/models/form-input-base';
+import { FormTextarea } from 'src/app/shared/modules/components/dynamic-form/models/form-textarea';
+import { FormTextbox } from 'src/app/shared/modules/components/dynamic-form/models/form-textbox';
 
 export const BILLING_CONFIG_FORM: FormInputBase<string | boolean>[] = [
   new FormDropdown({
