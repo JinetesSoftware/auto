@@ -16,7 +16,7 @@ const ClientSchema = new mongoose.Schema(
     address: { type: String, require: true },
     email: { type: String, unique: true, require: true },
     password: { type: String, require:true },
-    phone_Number: { type: String },
+    phone_number: { type: String },
     date_start: { type: Date, require:true }, // timestamp
     works: { type: mongoose.Types.ObjectId, required: false, ref: "works" },
     docs: { type: mongoose.Types.ObjectId, required: false, ref: "works" },

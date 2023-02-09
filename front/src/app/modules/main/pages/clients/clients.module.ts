@@ -9,6 +9,7 @@ import { BillingComponent } from './features/billing/billing.component';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/shared/modules/components/components.module';
+import { UpdateComponent } from './features/update/update.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ComponentsModule } from 'src/app/shared/modules/components/components.m
     NewClientComponent,
     WorkOrdersComponent,
     BillingComponent,
+    UpdateComponent,
   ],
   imports: [
     CommonModule,

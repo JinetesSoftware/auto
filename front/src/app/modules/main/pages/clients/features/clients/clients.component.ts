@@ -20,25 +20,17 @@ export class ClientsComponent {
     'icon',
   ];
   titleModal: string = 'Eliminar Cliente';
-  clientUses!: Client;
+  clientUses: Client = {} as Client;
 
   constructor(
     private clientService: ClientsService,
-    private router:Router,
+    private router: Router,
     private modalService: ModalService
   ) {
     this.clientService.getClients().subscribe((resp) => {
       if (resp) {
-        console.log('CLIENTES ANTES', resp);
-        this.filterClientsActivated(resp.clients);
-        console.log('CLIENTES', this.clients);
+        this.clients = resp.clients;
       }
-    });
-  }
-
-  filterClientsActivated = (clients: Client[]) => {
-    this.clients = clients.filter((cli: Client) => {
-      return cli.status === true;
     });
   }
 
@@ -55,7 +47,7 @@ export class ClientsComponent {
           if (resp) {
             this.clients = this.clients.filter((cli) => {
               return cli._id !== this.clientUses._id;
-            })
+            });
           }
         });
       this.modalService.close();
@@ -65,6 +57,6 @@ export class ClientsComponent {
   }
 
   updateClient(id: string) {
-    this.router.navigate(['/app/client/update-client',id])
+    this.router.navigate(['/app/client/update/', id]);
   }
 }

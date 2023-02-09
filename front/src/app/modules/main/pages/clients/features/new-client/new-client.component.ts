@@ -17,7 +17,11 @@ export class NewClientComponent implements OnInit {
   registerInputs: any = INPUTS_FORMS;
   message: string =
     'El formulario no se ha rellenado de forma correcta, revíselo';
-  constructor(private clientService: ClientsService, private router: Router, private toastr: ToastrService) {}
+  constructor(
+    private clientService: ClientsService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.clientService.getClients().subscribe((clients: any) => {
@@ -30,7 +34,6 @@ export class NewClientComponent implements OnInit {
     this.createCodeClient();
     this.calculateAge();
     this.clientService.postClient(this.newClient).subscribe((resp: any) => {
-      console.log('NUEVO CLIENTE',resp);
       if (resp.newclient.person_name) {
         this.router.navigate(['/app']);
         this.numClients++;
@@ -47,9 +50,12 @@ export class NewClientComponent implements OnInit {
 
   createCodeClient = () => {
     let date = new Date();
-    let code = `${this.newClient.person_name}-${date.getFullYear()}-${this.numClients + 1}`;
+    let code = `${this.newClient.person_name}-${date.getFullYear()}-${
+      this.numClients + 1
+    }`;
     this.newClient.client_code = code;
   };
+
   calculateAge = () => {
     if (!this.newClient.birthdate) {
       return;
@@ -57,9 +63,8 @@ export class NewClientComponent implements OnInit {
     let date = new Date();
     let birth = new Date(this.newClient.birthdate);
     let miliSecondsDay = 60 * 60 * 1000 * 24;
-    let years =( date.getTime() - birth.getTime())/ miliSecondsDay;
+    let years = (date.getTime() - birth.getTime()) / miliSecondsDay;
     years = Math.trunc(years / 365);
     this.newClient.age = years;
-
   };
 }

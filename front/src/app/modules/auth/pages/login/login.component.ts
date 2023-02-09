@@ -40,12 +40,10 @@ export class LoginComponent {
           this.router.navigate(['']);
         } else {
           this.router.navigate(['/app']);
-          console.log('Te has loagueado');
         }
       });
     } else {
       this.loginForm.markAllAsTouched();
-      console.log('Invalid Form');
     }
   };
   //VALIDATE FORM

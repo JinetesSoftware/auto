@@ -1,4 +1,5 @@
 import { ValidatorFn } from '@angular/forms';
+import { Client } from 'src/app/core/models/Client';
 
 export class FormInputBase<T> {
   placeholder: T | string | undefined;
@@ -29,7 +30,7 @@ export class FormInputBase<T> {
       validators?: ValidatorFn[] | null;
       readonly?: boolean;
       description?: string;
-      customError?:CustomError[];
+      customError?: CustomError[];
     } = {}
   ) {
     this.placeholder = options.placeholder;
@@ -46,9 +47,17 @@ export class FormInputBase<T> {
     this.description = options.description || '';
     this.customError = options.customError || [];
   }
+
+  updateValues(obj: Record<string, any>) {
+    for (const key in obj) {
+      if (key === this.key) {
+        this.value = obj[key];
+      }
+    }
+  }
 }
 
 export interface CustomError {
-  regex: string,
-  msg: string
+  regex: string;
+  msg: string;
 }

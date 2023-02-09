@@ -1,9 +1,10 @@
 const { clientModel } = require("../models");
+const client = require("../models/nosql/client");
 const { handleErrors } = require("../utils/handleErrors");
 
 const getClients = async (req, res) => {
   try {
-    const clients = await clientModel.find({});
+    const clients = await clientModel.find({ status: true });
     res.send({ clients });
   } catch (e) {
     handleErrors(res, (msg = `ERROR_GET_CLIENTS: ${e}`));
@@ -13,15 +14,15 @@ const getClients = async (req, res) => {
 const getClientById = async (req, res) => {
   try {
     const { id } = req.params;
-    const client = await clientModel.findOneAndPopulate(id);
-    res.send({ client: client[0] });
+    const client = await clientModel.findById(id);
+    res.send({ client });
   } catch (e) {
     handleErrors(res, (msg = `ERROR_GET_CLIENT: ${e}`));
   }
 };
 
 const createClient = async (req, res) => {
-  console.log('BODY',req.body);
+  console.log("BODY", req.body);
   try {
     const { body } = req;
     const newclient = await clientModel.create(body);
@@ -58,13 +59,22 @@ const updateClient = async (req, res) => {
     const { id } = req.params;
     const { body } = req;
 
+    console.log(body)
     await clientModel.findByIdAndUpdate(id, body);
-    const updated = await clientModel.findOne({ id });
-
-    res.send({ msg: `${id} updated successfully`, updated: updated.status });
+    const client = await clientModel.findById(id);
+    res.send({ msg: `${id} updated successfully`, client });
   } catch (err) {
     handleErrors(res, (msg = "ERROR_UPDATED_CLIENT"));
     console.log(err);
+  }
+};
+
+const getClientsTrash = async (req, res) => {
+  try {
+    const clients = await clientModel.find({ status: false });
+    res.send({ clients });
+  } catch (e) {
+    handleErrors(res, (msg = `ERROR_GET_CLIENTS: ${e}`));
   }
 };
 
@@ -74,4 +84,5 @@ module.exports = {
   createClient,
   desactivateClient,
   updateClient,
+  getClientsTrash,
 };

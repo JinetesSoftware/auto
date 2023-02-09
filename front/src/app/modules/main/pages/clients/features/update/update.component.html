@@ -1,0 +1,20 @@
+<div class="new-client">
+  <div class="new-client-title">
+    <h2>Editar Cliente</h2>
+  </div>
+  <div class="new-client-form">
+    <form class="new-client-form__container">
+      <app-dynamic-form
+        [formLayout]="'3'"
+        [inputLayout]="'3:1'"
+        (formData)="updateClient($event)"
+        (cancelForm)="cancelForm($event)"
+        [submit]="true"
+        [formFields]="fields"
+        [messageToast1]="
+          'El formulario no se ha rellenado de forma correcta, revíselo'
+        "
+      ></app-dynamic-form>
+    </form>
+  </div>
+</div>

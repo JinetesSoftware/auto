@@ -4,6 +4,8 @@ import { ClientsComponent } from './features/clients/clients.component';
 import { NewClientComponent } from './features/new-client/new-client.component';
 import { WorkOrdersComponent } from './features/work-orders/work-orders.component';
 import { BillingComponent } from './features/billing/billing.component';
+import { UpdateComponent } from './features/update/update.component';
+import { GetClientByIdResolver } from './clients.resolver';
 
 const routes: Routes = [
   {
@@ -26,6 +28,13 @@ const routes: Routes = [
   {
     path: 'client/billing',
     component: BillingComponent,
+  },
+  {
+    path: 'client/update/:id',
+    component: UpdateComponent,
+    resolve: {
+      data: GetClientByIdResolver
+    }
   },
 ];
 

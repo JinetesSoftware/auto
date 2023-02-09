@@ -10,11 +10,9 @@ display: BehaviorSubject<boolean> = new BehaviorSubject(false)
 
   open = () => {
     this.display.next(true);
-   console.log('PASO POR AQUI open');
 
   }
   close = () => {
     this.display.next(false);
-    console.log('PASO POR AQUI close');
   }
 }

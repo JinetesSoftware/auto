@@ -52,7 +52,7 @@ export  const INPUTS_FORMS = [
     value:'',
     key: 'phone_number',
     label: 'Número de teléfono',
-    type: 'number',
+    type: 'text',
     validators:[Validators.required,Validators.maxLength(14), Validators.maxLength(9)],
     customError: []
   }),
