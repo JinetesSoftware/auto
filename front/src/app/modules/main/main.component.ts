@@ -11,8 +11,8 @@ export class MainComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        if(val.id === 3) {
-          this.url = `${val.url}/client`
+        if (val.id === 3) {
+          this.url = `${val.url}/client`;
           return;
         }
         this.url = val.url;
@@ -43,6 +43,10 @@ export class MainComponent {
         {
           name: 'Billing',
           url: '/app/client/billing',
+        },
+        {
+          name: 'Papelera',
+          url: '/app/client/trash',
         },
       ],
     },

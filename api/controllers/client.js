@@ -54,6 +54,25 @@ const desactivateClient = async (req, res) => {
   }
 };
 
+
+const activateClient = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updated = await clientModel.findByIdAndUpdate(id, {
+      status: true,
+    });
+    if (updated.status) {
+      handleErrors(res, (msg = `ERROR_CLIENT_ALREADY_ACTIVATED: ${e}`));
+      return;
+    }
+    res.send({
+      msg: `${id} activated successfully`,
+    });
+  } catch (e) {
+    handleErrors(res, (msg = `ERROR_ACTIVATE_CLIENT: ${e}`));
+  }
+};
+
 const updateClient = async (req, res) => {
   try {
     const { id } = req.params;
@@ -83,6 +102,7 @@ module.exports = {
   getClientById,
   createClient,
   desactivateClient,
+  activateClient,
   updateClient,
   getClientsTrash,
 };

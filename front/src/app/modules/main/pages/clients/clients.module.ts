@@ -10,6 +10,7 @@ import { MaterialModule } from 'src/app/shared/modules/material/material.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/shared/modules/components/components.module';
 import { UpdateComponent } from './features/update/update.component';
+import { TrashBinComponent } from './features/trash-bin/trash-bin.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { UpdateComponent } from './features/update/update.component';
     WorkOrdersComponent,
     BillingComponent,
     UpdateComponent,
+    TrashBinComponent,
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { WorkOrdersComponent } from './features/work-orders/work-orders.componen
 import { BillingComponent } from './features/billing/billing.component';
 import { UpdateComponent } from './features/update/update.component';
 import { GetClientByIdResolver } from './clients.resolver';
+import { TrashBinComponent } from './features/trash-bin/trash-bin.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
     resolve: {
       data: GetClientByIdResolver
     }
+  },
+  {
+    path: 'client/trash',
+    component: TrashBinComponent,
   },
 ];
 
