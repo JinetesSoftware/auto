@@ -27,8 +27,24 @@ export class ClientsService {
           return e;
         }
       })
-    );
-  };
+    )
+  }
+  getClientById = (id: string):Observable<any> => {
+    return this.http.get<any>(`${this.apiURL}/client/${id}`).pipe(
+      tap((resp) => {
+        if (resp) {
+          this.toastr.success(`Se ha cargado los datos de ${resp.client.person_name}`)
+        }
+      }),
+      catchError((e: any) =>{
+        console.error('ERROR DEL GET ID',e);
+        if (e) {
+          this.toastr.error(`Ha habido un error al cargar los datos del cliente`)
+          return e;
+        }
+      })
+    )
+  }
 
   postClient = (client: Client) => {
     return this.http.post<any>(`${this.apiURL}/client/create`, client).pipe(

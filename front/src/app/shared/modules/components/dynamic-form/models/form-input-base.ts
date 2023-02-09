@@ -13,8 +13,10 @@ export class FormInputBase<T> {
   options: { key: string; value: string }[];
   validators: ValidatorFn[] | null;
   readonly: boolean;
+  disabled:boolean;
   description?: string;
   customError?: CustomError[];
+
 
   constructor(
     options: {
@@ -29,6 +31,7 @@ export class FormInputBase<T> {
       options?: { key: string; value: string }[];
       validators?: ValidatorFn[] | null;
       readonly?: boolean;
+      disabled?:boolean;
       description?: string;
       customError?: CustomError[];
     } = {}
@@ -44,6 +47,7 @@ export class FormInputBase<T> {
     this.options = options.options || [];
     this.validators = options.validators || [];
     this.readonly = !!options.readonly;
+    this.disabled = options.disabled || false;
     this.description = options.description || '';
     this.customError = options.customError || [];
   }

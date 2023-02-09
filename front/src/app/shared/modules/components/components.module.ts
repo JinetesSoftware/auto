@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { LoaderComponent } from './loader/loader.component';
 import { ModalComponent } from './modal/modal.component';
+import { InputFileComponent } from './input-file/input-file.component';
 
 const c = [
   DynamicFormComponent,
@@ -15,7 +16,7 @@ const c = [
 ];
 
 @NgModule({
-  declarations: [...c],
+  declarations: [...c, InputFileComponent],
   exports: [...c],
   imports: [CommonModule, ReactiveFormsModule, FormsModule, MaterialModule],
 })

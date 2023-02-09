@@ -26,11 +26,11 @@ export class MainComponent {
       submenus: [
         {
           name: 'New client',
-          url: '/app/client/new-client',
+          url: '/app/client/new-client/undefined',
         },
         {
           name: 'Clients List',
-          url: '/app/client',
+          url: '/app/client/clients',
         },
         {
           name: 'Works orders',
