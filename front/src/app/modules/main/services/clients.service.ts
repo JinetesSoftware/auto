@@ -29,7 +29,7 @@ export class ClientsService {
       })
     )
   }
-  getClientById = (id: string):Observable<any> => {
+  getClientById = (id: string | null):Observable<any> => {
     return this.http.get<any>(`${this.apiURL}/client/${id}`).pipe(
       tap((resp) => {
         if (resp) {

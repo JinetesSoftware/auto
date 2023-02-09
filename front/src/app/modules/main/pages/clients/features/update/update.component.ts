@@ -27,10 +27,12 @@ export class UpdateComponent {
     const { data } = this.route.snapshot.data as ClientReq;
     this.fields.forEach((field) => field.updateValues(data.client));
     this.clientId = data.client._id;
+    this.client = data.client;
   }
 
   updateClient(client: Client) {
     this.client = client;
+    this.calculateAge();
     this.clientService
       .updateClient(this.client, this.clientId)
       .subscribe((resp: any) => {
@@ -48,5 +50,19 @@ export class UpdateComponent {
     if (!ev) {
       this.router.navigate(['/app']);
     }
+  };
+
+  calculateAge = () => {
+    if (!this.client.birthdate) {
+      return;
+    }
+    let date = new Date();
+    let birth = new Date(this.client.birthdate);
+    let miliSecondsDay = 60 * 60 * 1000 * 24;
+    let years = (date.getTime() - birth.getTime()) / miliSecondsDay;
+    years = Math.trunc(years / 365);
+    this.client.age = years;
+    console.log(this.client.age);
+
   };
 }
