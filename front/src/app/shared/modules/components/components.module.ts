@@ -13,10 +13,11 @@ const c = [
   DynamicFormInputComponent,
   LoaderComponent,
   ModalComponent,
+  InputFileComponent
 ];
 
 @NgModule({
-  declarations: [...c, InputFileComponent],
+  declarations: [...c],
   exports: [...c],
   imports: [CommonModule, ReactiveFormsModule, FormsModule, MaterialModule],
 })

@@ -1,0 +1,83 @@
+
+.doc {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  &-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.container-input {
+  text-align: center;
+  background: #282828;
+  border-top: 5px solid #C2185B;
+  padding: 50px 0;
+  border-radius: 6px;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputfile + label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+}
+
+.inputfile + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  margin-right: 0.25em;
+}
+
+.iborrainputfile {
+font-size:16px;
+font-weight:normal;
+font-family: 'Lato';
+}
+
+.inputfile-1 + label {
+  color: #fff;
+  background-color: #C2185B;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+  background-color: #9a2353;
+}
+
+@media screen and (max-width: 50em) {
+.inputfile-7 + label strong {
+  display: block;
+}
+}
+
