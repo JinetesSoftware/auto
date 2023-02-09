@@ -25,7 +25,7 @@ export interface Client {
 }
 
 export interface Doc {
-  name: string;
+  fileName: string;
   base_doc: string;
   code: string;
   isPay: boolean;
