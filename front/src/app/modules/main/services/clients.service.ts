@@ -29,6 +29,23 @@ export class ClientsService {
       })
     )
   }
+
+  getClientsTrash = (): Observable<any> => {
+    return this.http.get<Client[]>(`${this.apiURL}/client/trash`).pipe(
+      tap((resp) => {
+        if (resp) {
+          this.toastr.success(`Se han cargado la papelera con éxito`);
+        }
+      }),
+      catchError((e: any) => {
+        console.error('ERROR DEL GET', e);
+        if (e) {
+          this.toastr.error('Ha habido un error al cargar la papelera');
+          return e;
+        }
+      })
+    )
+  }
   getClientById = (id: string | null):Observable<any> => {
     return this.http.get<any>(`${this.apiURL}/client/${id}`).pipe(
       tap((resp) => {
@@ -106,6 +123,29 @@ export class ClientsService {
         })
       );
   };
+
+
+  activatedClient = (client: Client) => {
+    return this.http
+      .put<any>(`${this.apiURL}/client/activate/${client._id}`, client)
+      .pipe(
+        tap((resp) => {
+          if (resp) {
+            this.toastr.success(`Cliente activado, ${client.person_name}`);
+          }
+        }),
+        catchError((e) => {
+          console.error('ERROR DEL PUST', e);
+          if (e) {
+            this.toastr.error(
+              `Ha habido un error al activar al cliente ${client.person_name}`
+            );
+            return e;
+          }
+        })
+      );
+  };
+
 
   deleteClients = () => {};
 

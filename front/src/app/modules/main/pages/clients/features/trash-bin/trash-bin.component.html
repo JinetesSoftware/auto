@@ -1,0 +1,50 @@
+<div class="clients">
+  <div class="clients-title">
+    <h2>Clientes desactivados</h2>
+  </div>
+  <div *ngIf="!clients!.length; else clientsTable">
+    <p>No se encuentran clientes en la BBDD</p>
+  </div>
+  <ng-template #clientsTable>
+    <table mat-table [dataSource]="clients" class="mat-elevation-z8 table">
+      <ng-container matColumnDef="person_name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.person_name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+      <ng-container matColumnDef="comercial_name">
+        <th mat-header-cell *matHeaderCellDef>Compañía</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.comercial_name ? element.comercial_name : "-" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="phone_number">
+        <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.phone_number ? element.phone_number : "-" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="icon">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon class="icon--white" (click)="openDeleteModal(element)"
+            > arrow_back</mat-icon
+          >
+        </td>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </table>
+  </ng-template>
+</div>
+<app-modal
+  [titleModal]="'Recuperar Cliente'"
+  [btn1Visible]="true"
+  [btnLabel]="'Recuperar'"
+  (modalAction)="activateClient($event)"
+>
+  <p>¿Desea recuperar {{ clientUses.person_name }}?</p>
+</app-modal>
