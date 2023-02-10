@@ -1,5 +1,5 @@
 <div class="doc">
-  <h5 class="doc-title">{{ labelInputFile }}</h5>
+  <h4 class="doc-title">{{ labelInputFile }}</h4>
   <div class="doc-container">
     <!-- Input -->
     <div class="doc-container">
@@ -29,7 +29,7 @@
         </label>
       </div>
       <!-- Input -->
-      <div class="doc-element">
+      <!-- <div class="doc-element">
         <button
           class="button_layout"
           (click)="saveDocument()"
@@ -37,7 +37,7 @@
         >
           Guardar
         </button>
-      </div>
+      </div> -->
     </div>
     <div class="input-group">
       <div class="documents_container-group--doc">
@@ -46,14 +46,20 @@
         >
         <ng-template #documentsContainer class="">
           <div *ngFor="let doc of docs">
-            <span class="name-doc" (click)="downloadPdf(doc.base_doc, doc.fileName)"
-              >{{ doc.fileName }} </span
-            ><button
-              class="btn btn-danger remove-button"
-              (click)="removeDocument(doc)"
-            >
-              X
-            </button>
+            <li>
+              <span
+                class="name-doc"
+                (click)="downloadPdf(doc.base_doc, doc.fileName)"
+                >{{ doc.fileName }} </span
+              ><button
+              class="remove-button"
+              mat-raised-button
+              color="warn"
+                (click)="removeDocument(doc)"
+              >
+                X
+              </button>
+            </li>
           </div>
           <br />
         </ng-template>

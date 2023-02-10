@@ -29,6 +29,7 @@ export interface Doc {
   base_doc: string;
   code: string;
   isPay: boolean;
+  status:boolean;
 }
 
 export interface ClientReq {

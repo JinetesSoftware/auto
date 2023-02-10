@@ -35,5 +35,5 @@
       ></app-dynamic-form>
     </form>
   </div>
-  <app-input-file></app-input-file>
+  <app-input-file (emitDocs)="recivedDocs($event)" [docs]="client.docs"></app-input-file>
 </div>
