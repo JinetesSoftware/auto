@@ -19,7 +19,7 @@ const ClientSchema = new mongoose.Schema(
     phone_number: { type: String },
     date_start: { type: Date, require:true }, // timestamp
     works: { type: mongoose.Types.ObjectId, required: false, ref: "works" },
-    docs: { type: mongoose.Types.ObjectId, required: false, ref: "works" },
+    docs: { type:Array, required: false },
     taxes: { type: Number | String },
     discount: { type: Number | String },
     apply_rates: { type: Number |String },

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Client, ClientReq } from 'src/app/core/models/Client';
+import { Client, ClientReq, Doc } from 'src/app/core/models/Client';
 import { ClientsService } from 'src/app/modules/main/services/clients.service';
 import { FormInputBase } from 'src/app/shared/modules/components/dynamic-form/models/form-input-base';
 import { UPDATE_FORMS } from './inputsForm';
@@ -14,6 +14,7 @@ import { UPDATE_FORMS } from './inputsForm';
 export class UpdateComponent {
   clientId: string = '';
   client: Client = {} as Client;
+  docs: Doc[] = []
   fields: FormInputBase<any>[] = UPDATE_FORMS;
 
   constructor(
@@ -31,8 +32,9 @@ export class UpdateComponent {
   }
 
   updateClient(client: Client) {
-    this.client = client;
+    this.client ={...client, docs:this.docs};
     this.calculateAge();
+    console.log('CLIENTE ACTUALIZADO', this.client);
     this.clientService
       .updateClient(this.client, this.clientId)
       .subscribe((resp: any) => {
@@ -51,6 +53,11 @@ export class UpdateComponent {
       this.router.navigate(['/app']);
     }
   };
+
+  recivedDocs = (ev:any) => {
+    console.log('DOCS',ev);
+    this.docs = ev;
+  }
 
   calculateAge = () => {
     if (!this.client.birthdate) {

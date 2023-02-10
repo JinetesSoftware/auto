@@ -1,9 +1,9 @@
 require("dotenv").config();
 const express = require("express");
+const myParser =require("body-parser")
 
 const dbConnect = require("./config/mongo");
 const loggerStream = require("./utils/handleLogger");
-
 
 const app = express();
 const port = process.env.PORT;
@@ -15,7 +15,10 @@ app.use(express.static("public"));
  * Server config
  **/
 app.use(cors());
-app.use(express.json());
+app.use(myParser.json({ limit: '256mb' }));
+app.use(myParser.urlencoded({ limit: '256mb', extended: true }));
+app.use(myParser.text({ limit: '256mb' }));
+
 
 /**
  * Morgan
@@ -30,7 +33,7 @@ morgan(app, {
 /**
  * Utils
  **/
- const HTTPSTATUSCODE = require("./utils/handleStatusCode");
+const HTTPSTATUSCODE = require("./utils/handleStatusCode");
 
 /**
  * Hello World

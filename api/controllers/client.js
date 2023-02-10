@@ -1,10 +1,9 @@
 const { clientModel } = require("../models");
-const client = require("../models/nosql/client");
 const { handleErrors } = require("../utils/handleErrors");
 
 const getClients = async (req, res) => {
   try {
-    const clients = await clientModel.find({ status: true });
+    const clients = await clientModel.find({ status: true },{docs:0, works:0});
     res.send({ clients });
   } catch (e) {
     handleErrors(res, (msg = `ERROR_GET_CLIENTS: ${e}`));
@@ -58,7 +57,7 @@ const updateClient = async (req, res) => {
   try {
     const { id } = req.params;
     const { body } = req;
-
+console.log(body);
     console.log(body)
     await clientModel.findByIdAndUpdate(id, body);
     const client = await clientModel.findById(id);

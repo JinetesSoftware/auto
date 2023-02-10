@@ -1,10 +1,13 @@
-
 .doc {
   margin: 5px;
   padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  &-title {
+    font-weight: 600;
+    text-decoration: underline;
+  }
   &-container {
     display: flex;
     align-items: center;
@@ -22,9 +25,9 @@
   text-align: center;
   background: #282828;
   border-top: 5px solid #C2185B;
-  padding: 50px 0;
+  padding: 30px 0;
   border-radius: 6px;
-  width: 50%;
+  width: 30%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -75,8 +78,21 @@ font-family: 'Lato';
   background-color: #9a2353;
 }
 
+.remove-button {
+  width: 20px !important;
+  height: 20px;
+  margin: 5px;
+}
+.name-doc {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #C2185B;
+  }
+}
+
 @media screen and (max-width: 50em) {
-.inputfile-7 + label strong {
+.inputfile-1 + label strong {
   display: block;
 }
 }
