@@ -7,13 +7,9 @@
   </div>
   <ng-template #clientsTable>
     <table mat-table [dataSource]="clients" class="mat-elevation-z8 table">
-      <ng-container matColumnDef="person_name">
-        <th mat-header-cell *matHeaderCellDef>Nombre</th>
-        <td mat-cell *matCellDef="let element">{{ element.person_name }}</td>
-      </ng-container>
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      <ng-container matColumnDef="client_code">
+        <th mat-header-cell *matHeaderCellDef>DNI/NIF</th>
+        <td mat-cell *matCellDef="let element">{{ element.client_code }}</td>
       </ng-container>
       <ng-container matColumnDef="comercial_name">
         <th mat-header-cell *matHeaderCellDef>Compañía</th>
@@ -21,6 +17,11 @@
           {{ element.comercial_name ? element.comercial_name : "-" }}
         </td>
       </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
       <ng-container matColumnDef="phone_number">
         <th mat-header-cell *matHeaderCellDef>Teléfono</th>
         <td mat-cell *matCellDef="let element">
@@ -30,6 +31,9 @@
       <ng-container matColumnDef="icon">
         <th mat-header-cell *matHeaderCellDef>Opciones</th>
         <td mat-cell *matCellDef="let element">
+          <mat-icon class="icon--black" (click)="updateClient(element._id)"
+          >assignment</mat-icon
+        >
           <mat-icon class="icon--black" (click)="updateClient(element._id)"
             >border_color</mat-icon
           >

@@ -48,11 +48,7 @@ export class NewClientComponent implements OnInit {
   };
 
   createCodeClient = () => {
-    let date = new Date();
-    let code = `${this.newClient.person_name}-${date.getFullYear()}-${
-      this.numClients + 1
-    }`;
-    this.newClient.client_code = code;
+    this.newClient.client_code = this.newClient.identity_doc;
   };
 
   calculateAge = () => {

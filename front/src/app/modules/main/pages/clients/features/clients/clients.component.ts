@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ClientsComponent {
   clients: Client[] = [];
   displayedColumns: any = [
-    'person_name',
+    'client_code',
     'email',
     'comercial_name',
     'phone_number',

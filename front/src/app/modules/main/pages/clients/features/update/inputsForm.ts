@@ -100,7 +100,7 @@ export  const UPDATE_FORMS = [
     type: 'string',
     disabled:false,
     validators:[Validators.required],
-    options:[{key:'NIE',value:'NIE'},{key:'CIF',value:'CIF'}],
+    options:[{key:'NIE',value:'NIE'},{key:'NIF',value:'NIF'}],
     customError: []
   }),
   new FormTextbox({
@@ -162,7 +162,7 @@ export  const UPDATE_FORMS = [
     label: 'Impuesto',
     type: 'text',
     disabled:false,
-    options:[{key:'IVA',value:'IVA'},{key:'IGIC',value:'IGIC'}],
+    options:[{key:'IVA',value:'21'},{key:'IGIC',value:'7'},{key:'No aplica',value:''}],
     validators:[],
     customError: []
   }),
